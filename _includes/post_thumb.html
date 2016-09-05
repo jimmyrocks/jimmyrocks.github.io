@@ -1,0 +1,33 @@
+{% assign placeholder = "https://placeholdit.imgix.net/~text?txtsize=34&txt=" | append: post.title | append: "&w=350&h=156" %}
+{% if post.image == null %}
+  {% assign image = placeholder %}
+  {% else %}
+  {% assign image = post.image %}
+{% endif %}
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
+  <a class="thumbnail" href="{{ post.url | prepend: site.url }}">
+    <div class="img-wrapper">
+      <img src="{{ image }}" alt="{{ post.title | escape }}" />
+    </div>
+    <div class="caption">
+      <time>{{ post.date | date: "%b %-d, %Y" }}:</time>
+      <p class="post-thumbnail-title">{{ post.title }}</p>
+    </div>
+  </a>
+</div>
+
+{% assign col2 = forloop.index | modulo: 2 %}
+{% assign col3 = forloop.index | modulo: 3 %}
+{% assign col4 = forloop.index | modulo: 4 %}
+{% assign col6 = forloop.index | modulo: 6 %}
+{% if col2 == 0 %}
+  <div class="clearfix-sm"></div>
+{% endif %}
+{% if col3 == 0 %}
+  <div class="clearfix-md"></div>
+{% endif %}
+{% if col4 == 0 %}
+  <div class="clearfix-lg"></div>
+  <div class="clearfix-xl"></div>
+{% endif %}
+

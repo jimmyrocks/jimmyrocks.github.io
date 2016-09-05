@@ -1,0 +1,14 @@
+$content-width: 800px;
+$main: $color-secondary-1-0;
+$font-style: 'Open Sans', sans-serif;
+$font-color: $text-color;
+$heading-font: 'Muli', sans-serif;
+$heading-font-color: $color-secondary-1-4;
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}

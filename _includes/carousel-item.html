@@ -1,0 +1,23 @@
+{% assign _title = post.title %}
+{% assign _description = post.description %}
+{% assign _date = post.date | date: "%b %-d, %Y" %}
+{% assign _active = "" %}
+{% assign _index = forloop.index %}
+{% if _index == 1 %}
+  {% assign _active = "active" %}
+{% endif %}
+{% assign _placeholder = "https://placeholdit.imgix.net/~text?txtsize=34&txt=" | append: post.title | append: "&w=350&h=156" %}
+{% if post.image == null %}
+  {% assign _image = _placeholder %}
+  {% else %}
+  {% assign _image = post.image %}
+{% endif %}
+
+
+<div class="item {{_active}}">
+  <img class="first-slide carousel-slide" src="{{_image}}" alt="{{ _title }}">
+  <div class="carousel-caption-custom">
+    <span class="carousel-title">{{ _title }}</span >:&nbsp;<time>[{{_date}}]</time>
+    <div class="carousel-description">{{ _description }}</div> 
+  </div>
+</div>

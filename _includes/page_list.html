@@ -1,0 +1,20 @@
+<h1 class="page-heading">{{page.title}}:</h1>
+
+<!-- TODO# Look into paginating this -->
+{% assign path = "_posts" | append: page.permalink %}
+{% assign filtered_posts = "" | split: ""  %}
+
+{% for raw_post in site.posts %}
+  {% if raw_post.path contains path %}
+    {% assign filtered_posts = filtered_posts | push: raw_post %}
+  {% endif %}
+{% endfor %}
+
+
+<div class="container">
+  <div class="row">
+    {% for post in filtered_posts %}
+      {% include post_thumb.html %}
+    {% endfor %}
+  </div>
+</div>

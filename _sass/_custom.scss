@@ -1,0 +1,145 @@
+div.navbar-container {
+  max-width: 100%;
+}
+
+nav.navbar-inverse {
+  background-color: $color-secondary-1-4;
+  background-image: -webkit-linear-gradient(top,$color-secondary-1-0 0%,$color-secondary-1-4 100%);
+  border: none;
+}
+
+a.active.navbar-brand,
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+  color: $background-color;
+  background-color: $color-secondary-1-2;
+  background-image: -webkit-linear-gradient(top,$color-secondary-1-0 100%,$color-secondary-1-2 0%);
+}
+
+div.footer-wrapper {
+  background-color: $background-color;
+  // background-image: radial-gradient(lighten($color-secondary-2-1, 7%) 0%, $background-color 65%);
+}
+
+img.round {
+  border-radius: 50%;
+}
+
+img.halfsize {
+  width: 60%;
+}
+
+.footer-col-6 {
+  width: -webkit-calc(60% - (30px / 2));
+  width: calc(60% - (30px / 2));
+}
+
+p.post-thumbnail-title {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 0px;
+}
+// http://stackoverflow.com/questions/21920333/bootstrap-3-max-min-resolutions-for-col
+
+@mixin clearfix-custom () {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// xs size
+@media (max-width: 768px) {
+  .clearfix-xs {
+    @include clearfix-custom();
+  };
+}
+
+// sm size
+@media (min-width: 768px) and (max-width: 992px) {
+  .clearfix-sm {
+    @include clearfix-custom();
+  };
+}
+
+// md size
+@media (min-width: 992px) and (max-width: 1200px) {
+  .clearfix-md {
+    @include clearfix-custom();
+  };
+}
+
+// lg size
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .clearfix-lg {
+    @include clearfix-custom();
+  };
+}
+
+// xl size
+@media (min-width: 1600px) {
+  .clearfix-xl {
+    @include clearfix-custom();
+  };
+}
+
+.carousel-slide {
+  margin: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  max-height: 300px;
+  min-height: 300px;
+}
+
+.carousel-caption-custom {
+  background-color: rgba(0,0,0,.9);
+  background-image: -webkit-linear-gradient(top, rgba(0,0,0,.5) 0%,rgba(0,0,0,1) 100%);
+  color: #FFF;
+  height: 100px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.carousel-title {
+  color: $color-secondary-1-1;
+  font-size: 1.5em;
+  font-weight: 600;
+  font-family: "Muli", sans-serif;
+}
+.carousel-description {
+  text-indent: 2em;
+}
+
+div#headerCarousel {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.carousel-control {
+  width: 8%;
+  height: 300px;
+}
+.carousel-control.left {
+  background-image: linear-gradient(to right,rgba($color-secondary-1-0,.5) 0,rgba(0,0,0,.0001) 100%);
+}
+.carousel-control.right {
+  background-image: linear-gradient(to left,rgba($color-secondary-1-0,.5) 0,rgba(0,0,0,.0001) 100%);
+}
+
+
+@media (min-width: 768px) {
+  .carousel-indicators {
+      bottom: 60px;
+      right: -200px;
+      left: auto;
+  }
+}
+@media (max-width: 768px) {
+  .carousel-indicators {
+      bottom: 60px;
+      right: -20%;
+      left: auto;
+  }
+}
