@@ -1,3 +1,13 @@
+{% assign path = "_nav" %}
+{% assign filtered_pages = "" | split: ""  %}
+
+{% for raw_page in site.pages %}
+  {{raw_page.path}}
+  {% if raw_page.path contains path %}
+    {% assign filtered_pages = filtered_pages | push: raw_page %}
+  {% endif %}
+{% endfor %}
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-container">
     <div class="navbar-header">
@@ -17,7 +27,7 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        {% for node in site.pages %} {% if node.title %}
+        {% for node in filtered_pages %} {% if node.title %}
         {% if page.url == node.url %}
         <li class="active"><a href="#">{{node.title}}</a></li>
         {% else %}
