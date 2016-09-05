@@ -25,7 +25,7 @@ github_username: jimmyrocks
 user_image: "https://pbs.twimg.com/profile_images/727594275949690881/9qKEYfPU.jpg"
 site_logo: ""
 highlighter: rouge
-include: ['_nav']
+include: ['_nav', '_pages']
 
 # Build settings
 markdown: kramdown
