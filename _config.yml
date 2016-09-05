@@ -24,8 +24,8 @@ twitter_username: jimmyrocks
 github_username: jimmyrocks
 user_image: "https://pbs.twimg.com/profile_images/727594275949690881/9qKEYfPU.jpg"
 site_logo: ""
-highlighter: pygments
-include: ['_pages']
+highlighter: rouge
+include: ['_nav']
 
 # Build settings
 markdown: kramdown
