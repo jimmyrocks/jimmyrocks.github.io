@@ -5,7 +5,7 @@
   {% assign image = post.image %}
 {% endif %}
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
-  <a class="thumbnail" href="{{ post.url | prepend: site.url }}">
+  <a class="thumbnail" href="{{ post.url }}">
     <div class="img-wrapper">
       <img src="{{ image }}" alt="{{ post.title | escape }}" />
     </div>
