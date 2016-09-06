@@ -16,10 +16,9 @@
 title: loc8.us
 email: jim@loc8.us
 description: > # this means to ignore newlines until "baseurl:"
-  Jim's writings about Information Science.
+  Jim's writings about Information Science.</br>
   Focused on Geospatial, ETL, statistics, and data visualization
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "http://localhost:4000" # the base hostname & protocol for your site
 twitter_username: jimmyrocks
 github_username: jimmyrocks
 user_image: "https://pbs.twimg.com/profile_images/727594275949690881/9qKEYfPU.jpg"
