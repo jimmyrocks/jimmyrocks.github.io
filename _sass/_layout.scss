@@ -26,17 +26,17 @@ h2 {
   font-size: 2em;
 }
 a {
-  color: $color-secondary-1-2;
+  color: saturate($color-secondary-1-2, 40%);
   // text-decoration: none;
   // font-weight: bold;
 }
 a:visited {
-  color: $color-secondary-1-2;
+  color: saturate($color-secondary-1-2, 40%);
   text-decoration: underline;
   // font-weight: bold;
 }
 a:hover {
-  color: lighten($color-secondary-1-2, 5%);
+  color: lighten(saturate($color-secondary-1-2, 80%), 15%);
   text-decoration: underline;
   // font-weight: bold;
 }
