@@ -2,7 +2,6 @@
 {% assign filtered_pages = "" | split: ""  %}
 
 {% for raw_page in site.pages %}
-  {{raw_page.path}}
   {% if raw_page.path contains path %}
     {% assign filtered_pages = filtered_pages | push: raw_page %}
   {% endif %}
@@ -21,7 +20,7 @@
       {% if page.url == site.baseurl %}
       <a class="active navbar-brand" href="#">{{ site.title }}</a>
       {% else %}
-      <a class="navbar-brand" href="{{ site.baseurl | prepend: site.url }}">{{ site.title }}</a>
+      <a class="navbar-brand" href="{{ site.baseurl }}">{{ site.title }}</a>
       {% endif %}
 
     </div>
