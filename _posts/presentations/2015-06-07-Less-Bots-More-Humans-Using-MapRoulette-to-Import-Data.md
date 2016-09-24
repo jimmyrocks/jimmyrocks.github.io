@@ -2,7 +2,9 @@
 layout: post
 title:  "Less Bots, More Humans: Using MapRoulette to Import Data"
 date:   2015-06-07 12:00:00 -0400
-image: https://www.nps.gov/npmap/slides/img/sotmus-2015.png
+image:  /images/presentations/sotmus-2015.png
+thumbnail:  /images/presentations/thumbnails/sotmus-2015-160.png
+thumbnail-lg:  /images/presentations/thumbnails/sotmus-2015-640.png
 ---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3rQ83mqj4bg" frameborder="0" allowfullscreen></iframe>
