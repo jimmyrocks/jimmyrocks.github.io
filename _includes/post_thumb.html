@@ -1,8 +1,12 @@
 {% assign placeholder = "https://placeholdit.imgix.net/~text?txtsize=34&txt=" | append: post.title | append: "&w=350&h=156" %}
-{% if post.image == null %}
+{% if post.image == null AND post.thumbnail == null %}
   {% assign image = placeholder %}
+{% else %}
+  {% if post.thumbnail %}
+    {% assign image = post.thumbnail %}
   {% else %}
-  {% assign image = post.image %}
+    {% assign image = post.image %}
+  {% endif %}
 {% endif %}
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumb">
   <a class="thumbnail" href="{{ post.url }}">
