@@ -1,0 +1,649 @@
+var boulderData = {
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2015-01-15T01:17:02Z",
+  "features": [{
+    "type": "Feature",
+    "id": "node/25765941",
+    "properties": {
+      "@id": "node/25765941",
+      "amenity": "restaurant",
+      "name": "Boulder Tea House"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2772966,
+        40.0154027
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1087811656",
+    "properties": {
+      "@id": "node/1087811656",
+      "amenity": "restaurant",
+      "cuisine": "regional",
+      "name": "Boulder Cafe"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2789389,
+        40.0182543
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1098984207",
+    "properties": {
+      "@id": "node/1098984207",
+      "addr:housenumber": "1123",
+      "addr:street": "Walnut Street",
+      "amenity": "restaurant",
+      "description": "Brew Pub",
+      "name": "Walnut Brewery",
+      "phone": "303-447-1345"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2804375,
+        40.0168555
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1098988278",
+    "properties": {
+      "@id": "node/1098988278",
+      "amenity": "restaurant",
+      "cuisine": "fish",
+      "name": "Jax Fish House"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2830982,
+        40.0171082
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1098991079",
+    "properties": {
+      "@id": "node/1098991079",
+      "amenity": "restaurant",
+      "cuisine": "pizza",
+      "name": "Old Chicago"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2810504,
+        40.0175375
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1305395268",
+    "properties": {
+      "@id": "node/1305395268",
+      "amenity": "restaurant",
+      "cuisine": "grill",
+      "name": "Ted's Montana Grill"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2732665,
+        40.0194211
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1305395304",
+    "properties": {
+      "@id": "node/1305395304",
+      "amenity": "restaurant",
+      "cuisine": "sushi",
+      "name": "Zanmai"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2797397,
+        40.019169
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1305395333",
+    "properties": {
+      "@id": "node/1305395333",
+      "amenity": "restaurant",
+      "name": "Aji"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2746255,
+        40.01913
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1305395339",
+    "properties": {
+      "@id": "node/1305395339",
+      "amenity": "restaurant",
+      "cuisine": "pizza",
+      "name": "Pizzeria Local"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2726309,
+        40.0192624
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1403541787",
+    "properties": {
+      "@id": "node/1403541787",
+      "addr:housenumber": "1047",
+      "addr:postcode": "80302",
+      "addr:street": "Pearl Street",
+      "amenity": "restaurant",
+      "cuisine": "american",
+      "name": "SALT The Bistro",
+      "website": "http://www.saltboulderbistro.com/"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2815254,
+        40.0177284
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1403982975",
+    "properties": {
+      "@id": "node/1403982975",
+      "addr:housenumber": "2010",
+      "addr:postcode": "80302",
+      "addr:street": "10th Street",
+      "amenity": "restaurant",
+      "cuisine": "chinese",
+      "name": "Zoe Ma Ma",
+      "website": "http://www.zoemama.com/"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2825213,
+        40.0175715
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1713668653",
+    "properties": {
+      "@id": "node/1713668653",
+      "amenity": "restaurant",
+      "cuisine": "mexican",
+      "name": "Rio Grande"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2808345,
+        40.0168254
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1844546299",
+    "properties": {
+      "@id": "node/1844546299",
+      "amenity": "restaurant",
+      "name": "Snooze Cafe"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2740314,
+        40.0192448
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1844546910",
+    "properties": {
+      "@id": "node/1844546910",
+      "amenity": "restaurant",
+      "name": "Foolish Craig's Cafe"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2743265,
+        40.019179
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2310567153",
+    "properties": {
+      "@id": "node/2310567153",
+      "addr:housenumber": "1837",
+      "addr:street": "Pearl Street",
+      "amenity": "restaurant",
+      "name": "Mateo",
+      "source": "survey"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2711092,
+        40.0198628
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2611146751",
+    "properties": {
+      "@id": "node/2611146751",
+      "addr:city": "Boulder",
+      "addr:housenumber": "2014",
+      "addr:postcode": "80302",
+      "addr:street": "10th Street",
+      "amenity": "restaurant",
+      "cuisine": "sushi",
+      "name": "Sushi Tora",
+      "phone": "(303) 444-2280"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2825662,
+        40.0176784
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2686077528",
+    "properties": {
+      "@id": "node/2686077528",
+      "addr:housename": "Luciles",
+      "addr:housenumber": "2124",
+      "addr:postcode": "80302",
+      "addr:street": "14th St",
+      "amenity": "restaurant",
+      "name": "Luciles",
+      "website": "http://www.luciles.com/locations-a-menus/49-boulder-location-a-menu"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2776279,
+        40.0200312
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2705158088",
+    "properties": {
+      "@id": "node/2705158088",
+      "addr:city": "Boulder",
+      "addr:housenumber": "1426",
+      "addr:postcode": "80302",
+      "addr:street": "Pearl Street",
+      "amenity": "restaurant",
+      "cuisine": "Sushi",
+      "name": "Kasa Japanese Grill and Bar",
+      "phone": "(303) 938-8888",
+      "website": "http://kasasushiboulder.com"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2761193,
+        40.0184436
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2705159755",
+    "properties": {
+      "@id": "node/2705159755",
+      "addr:city": "Boulder",
+      "addr:housenumber": "1447",
+      "addr:postcode": "80302",
+      "addr:street": "Pearl Street Mall",
+      "amenity": "restaurant",
+      "cuisine": "Burritos,_Tacos",
+      "name": "Illegal Pete's Co",
+      "phone": "(303) 440-3955",
+      "website": "http://illegalpetes.com"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2763055,
+        40.018759
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2705160938",
+    "properties": {
+      "@id": "node/2705160938",
+      "amenity": "restaurant",
+      "name": "The Cheesecake Factory"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2773167,
+        40.018539
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2705160939",
+    "properties": {
+      "@id": "node/2705160939",
+      "amenity": "restaurant",
+      "cuisine": "Italian11",
+      "name": "Trattoria On Pearl"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2764872,
+        40.0185289
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2705160940",
+    "properties": {
+      "@id": "node/2705160940",
+      "amenity": "restaurant",
+      "cuisine": "Smoothies",
+      "name": "Maiberry"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2764813,
+        40.0187164
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2705160942",
+    "properties": {
+      "@id": "node/2705160942",
+      "amenity": "restaurant",
+      "cuisine": "Sports_Bar",
+      "name": "Lazy Dog"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.277494,
+        40.0182831
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2705160943",
+    "properties": {
+      "@id": "node/2705160943",
+      "amenity": "restaurant",
+      "cuisine": "Mediterranean",
+      "name": "Falafel King"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2782092,
+        40.0181653
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2705161035",
+    "properties": {
+      "@id": "node/2705161035",
+      "amenity": "restaurant",
+      "cuisine": "Pizza",
+      "name": "Pizza Colore"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2777687,
+        40.0182574
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2705161036",
+    "properties": {
+      "@id": "node/2705161036",
+      "amenity": "restaurant",
+      "cuisine": "Deli",
+      "name": "Salvaggio's Deli"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2775154,
+        40.0184244
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2705168538",
+    "properties": {
+      "@id": "node/2705168538",
+      "amenity": "restaurant",
+      "cuisine": "Deli",
+      "name": "Boulder Creek Market"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2784132,
+        40.0165002
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2710192564",
+    "properties": {
+      "@id": "node/2710192564",
+      "amenity": "restaurant",
+      "cuisine": "regional",
+      "name": "Oak at Fourteenth",
+      "phone": "+01-303-444-3622",
+      "website": "http://oakatfourteenth.com/"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2770719,
+        40.0181428
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/3272108572",
+    "properties": {
+      "@id": "node/3272108572",
+      "addr:city": "Boulder",
+      "addr:housenumber": "1738",
+      "addr:postcode": "80302",
+      "addr:street": "Pearl Street",
+      "amenity": "restaurant",
+      "name": "Frasca Food and Wine"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2724538,
+        40.0193004
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/3272125390",
+    "properties": {
+      "@id": "node/3272125390",
+      "addr:city": "Boulder",
+      "addr:housenumber": "1125",
+      "addr:postcode": "80302",
+      "addr:street": "Pearl Street Mall",
+      "amenity": "restaurant",
+      "name": "West Flanders Brewing Company"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2807711,
+        40.0178718
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1087811754",
+    "properties": {
+      "@id": "node/1087811754",
+      "amenity": "cafe",
+      "cuisine": "sandwich",
+      "name": "Paradise Bakery & Cafe"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2798239,
+        40.018068
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1098989177",
+    "properties": {
+      "@id": "node/1098989177",
+      "amenity": "cafe",
+      "cuisine": "italian",
+      "name": "Pasta Jay's"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2824143,
+        40.0175303
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1204448220",
+    "properties": {
+      "@id": "node/1204448220",
+      "amenity": "cafe",
+      "name": "Tea and Cakes"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2771,
+        40.0180412
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1305395346",
+    "properties": {
+      "@id": "node/1305395346",
+      "addr:housenumber": "1628",
+      "addr:street": "Pearl Street",
+      "amenity": "cafe",
+      "name": "Moongate"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2738206,
+        40.0190207
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1403540019",
+    "properties": {
+      "@id": "node/1403540019",
+      "addr:housenumber": "1015",
+      "addr:postcode": "80302",
+      "addr:street": "Pearl Street",
+      "amenity": "cafe",
+      "cuisine": "coffee_shop",
+      "name": "Ozo Coffee",
+      "website": "http://ozocoffee.com/",
+      "wifi": "free"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2822979,
+        40.0175271
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2306393402",
+    "properties": {
+      "@id": "node/2306393402",
+      "amenity": "cafe",
+      "name": "Boxcar coffee"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2719605,
+        40.0182799
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2310567148",
+    "properties": {
+      "@id": "node/2310567148",
+      "amenity": "cafe",
+      "cuisine": "teahouse",
+      "name": "Ku Cha House of Tea",
+      "source": "survey"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2804666,
+        40.0179444
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2705160941",
+    "properties": {
+      "@id": "node/2705160941",
+      "amenity": "cafe",
+      "cuisine": "coffee_shop",
+      "name": "Starbucks"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2765326,
+        40.0187085
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/2705164621",
+    "properties": {
+      "@id": "node/2705164621",
+      "amenity": "cafe",
+      "cuisine": "Coffee,_Sandwiches",
+      "internet_access": "yes",
+      "name": "The Cup"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2755398,
+        40.0189256
+      ]
+    }
+  }, {
+    "type": "Feature",
+    "id": "node/1305395261",
+    "properties": {
+      "@id": "node/1305395261",
+      "amenity": "bar",
+      "name": "The Corner Bar"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.2792546,
+        40.0192597
+      ]
+    }
+  }]
+};

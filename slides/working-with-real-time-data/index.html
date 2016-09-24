@@ -1,0 +1,592 @@
+---
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Real Time Road Data in the National Park Service | Slides | NPMap</title>
+    <meta name="description" content="Jim gave a short talk on how the National Park Service uses CartoDB in its Places system for a GeoNYC meetup, 'When There is a Bump in the Road'.">
+    <meta name="author" content="Jim McAndrew; Nate Irwin">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/reveal.min.css" rel="stylesheet">
+    <link href="css/theme/nps.css" id="theme" rel="stylesheet">
+    <link href="lib/css/zenburn.css" rel="stylesheet">
+    <script>
+     document.write('<link href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" media="print" rel="stylesheet">');
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+   <style>
+      .nps-header-container {
+        width:100%;
+        background-color:black;
+        background-image:url(img/topo_pattern.png);
+        border-radius: 5px;
+      }
+      .nps-header-content {
+        display:inline-block;
+        padding:20px !important;
+        margin: 0 auto;
+      }
+      .nps-header-icon {
+        display:inline-block;
+        vertical-align: top !important;
+        margin-right:10px !important;
+      }
+      .nps-header-icon img {
+        margin:0 !important;
+      }
+      .nps-header-text {
+        display:inline-block;
+        vertical-align:top !important;
+        padding-top:10px !important;
+      }
+      .nps-header-text h1 {
+        font-size: 2.5em;
+        margin:0 !important;
+      }
+      .nps-builder {
+        background-color:#264275;
+      }
+      .nps-places {
+        background-color:#76593A;
+      }
+      .nps-places-live {
+        background-color:#5a7d3d;
+      }
+      .nps-npmapjs {
+        background-color:#B23739;
+      }
+      .nps-parktiles {
+        background-color:#CF9F30;
+      }
+      .nps-bootstrap {
+        background-color:#748851;
+      }
+      .nps-symbollibrary {
+        background-color:#343534;
+      }
+      .nps-background-gray {
+        background-color:#444;
+      }
+      p.ref {
+       font-size: smaller;
+      }
+      .img-circle-icon {
+        border-radius: 50%;
+        width: 15%;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <section>
+            <h3>Real Time Map Data in the National Park Service</h3>
+            <img alt="National Park Service Arrowhead" src="img/nps_arrowhead.png" style="height:400px;">
+            <h4>GeoNYC &ldquo;When There's a Bump in the Road&rdquo;: Monday, January 11, 2016</h4>
+            <p style="margin-top:20px;">https://www.nps.gov/npmap/slides/working-with-real-time-data/</p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <img alt="National Park Service Arrowhead" src="img/npmap_logo_color.png" style="border-radius:8px;">
+            <h2 style="margin-top:20px;line-height:125%;">Empowering National Parks </br> with Open Source Mapping Tools</h2>
+            <p><a href="https://www.nps.gov/npmap/">www.nps.gov/npmap</a></p>
+          </section>
+          <section>
+            <img alt="National Park Service Arrowhead" src="img/npmap_logo_color.png" style="border-radius:8px;">
+            <p>
+              <ul>
+                <li>NPMap: web maps for the National Park Service</li>
+                <li>A team of developers, cartographers, and data engineers that build tools to enable web mapping across the NPS</li>
+                <li>Focus on public-facing maps</li>
+                <li>NPS Graphic Identity Standards</li>
+                <li>Open-source technologies shared with the public</li>
+              </ul>
+            </p>
+            <img src="https://avatars1.githubusercontent.com/u/10443?v=3&s=400" class="img-circle-icon" />
+            <img src="https://avatars3.githubusercontent.com/u/98192?v=3&s=460" class="img-circle-icon" />
+            <img src="https://avatars0.githubusercontent.com/u/1238636?v=3&s=460" class="img-circle-icon" />
+            <img src="https://avatars3.githubusercontent.com/u/11392872?v=3&s=460" class="img-circle-icon" />
+            <img src="https://avatars2.githubusercontent.com/u/4741443?v=3&s=460" class="img-circle-icon" />
+          </section>
+        </section>
+
+        <!-- NPS Places -->
+        <section>
+          <section>
+            <div class='nps-header-container nps-places'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places</h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of Places Editor" src="img/places-1.png" style="height:600px;">
+          </section>
+          <section>
+            <div class='nps-header-container nps-places'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places</h1></div>
+              </div>
+            </div>
+            <h3>Technologies</h3>
+            <p>
+            <ul>
+              <li>Editors: modified iD editor from OpenStreetMap</li>
+              <ul>
+                <li>A modified version of the iD editor from OpenStreetMap</li>
+                <li>JOSM is also supported for advanced editing and imports</li>
+              </ul>
+              <li>Uses the OpenStreetMap API and data schema</li>
+              <li>node.js</li>
+              <li>PostgreSQL and PostGIS</li>
+              <li>CartoDB</li>
+            </ul>
+            </p>
+          </section>
+          <section>
+            <div class='nps-header-container nps-places'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places</h1></div>
+              </div>
+            </div>
+            <h3>Data Process</h3>
+            <p>
+            <ol>
+              <li>User adds data through the iD editor or JOSM</li>
+              <li>Changeset is written to the API database</li>
+              <li>A write to the PostGIS database is triggered when a changeset is completed</li>
+              <li>The points are rendered into points, lines, and polygons based on their tags with SQL in PostGIS</li>
+              <li>Every 5 minutes a process runs that finds changes and uploads them to CartoDB to be used in public-facing maps</li>
+            </ol>
+            </p>
+          </section>
+          <section>
+            <div class='nps-header-container nps-places'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places</h1></div>
+              </div>
+            </div>
+            <p>
+            <ul>
+              <li>Core data system for trails, roads, parking areas, buildings, and points of interest</li>
+              <li>Compatible with CLI tools for OpenStreetMap data processing</li>
+              <li>Built to enable all park employees to contribute to the map</li>
+              <li>Currently uploading GIS-based data to rapidly augment the database</li>
+              <li>Places Editor provides access to database in a browser</li>
+            </ul>
+            </p>
+          </section>
+        </section>
+
+        <!-- Park Tiles -->
+        <section>
+          <section>
+            <div class='nps-header-container nps-parktiles'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="Park Tiles Icon" src="img/parktiles_icon.png"></div>
+                <div class='nps-header-text'><h1>Park Tiles</h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of Park Tiles" src="img/park-tiles-1.png" style="height:600px;">
+          </section>
+
+          <section>
+            <div class='nps-header-container nps-parktiles'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="Park Tiles Icon" src="img/parktiles_icon.png"></div>
+                <div class='nps-header-text'><h1>Park Tiles</h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of Park Tiles" src="img/park-tiles.gif" style="height:400px;">
+          </section>
+
+          <section>
+            <div class='nps-header-container nps-parktiles'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="Park Tiles Icon" src="img/parktiles_icon.png"></div>
+                <div class='nps-header-text'><h1>Park Tiles</h1></div>
+              </div>
+            </div>
+            <p>
+            <ul>
+              <li>Suite of basemaps designed to fit NPS identity</li>
+              <li>Data from OpenStreetMap, Mapbox (Terrain), and NPS Places</li>
+              <li>Version 3: All Places data within Park Boundaries</li>
+            </ul>
+            </p>
+          </section>
+
+        </section>
+
+        <!-- NPMap Builder -->
+        <section>
+          <section>
+            <div class='nps-header-container nps-builder'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPMap Builder Icon" src="img/builder_icon.png"></div>
+                <div class='nps-header-text'><h1>NPMap Builder</h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of NPS Builder" src="img/builder-1.png" style="height:500px;">
+          </section>
+
+          <section>
+            <div class='nps-header-container nps-builder'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPMap Builder Icon" src="img/builder_icon.png"></div>
+                <div class='nps-header-text'><h1>NPMap Builder</h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of NPS Builder" src="img/builder-2.png" style="height:500px;">
+          </section>
+
+          <section>
+            <div class='nps-header-container nps-builder'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPMap Builder Icon" src="img/builder_icon.png"></div>
+                <div class='nps-header-text'><h1>NPMap Builder</h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of NPS Builder" src="img/builder-3.png" style="height:500px;">
+          </section>
+
+          <section>
+            <div class='nps-header-container nps-builder'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPMap Builder Icon" src="img/builder_icon.png"></div>
+                <div class='nps-header-text'><h1>NPMap Builder</h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of NPS Builder" src="img/builder-4.png" style="height:500px;">
+          </section>
+
+          <section>
+            <div class='nps-header-container nps-builder'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPMap Builder Icon" src="img/builder_icon.png"></div>
+                <div class='nps-header-text'><h1>NPMap Builder</h1></div>
+              </div>
+            </div>
+            <p>
+                <ul>
+                        <li>A tool to build beautiful, accessible web maps that can be easily added to NPS.gov and standalone sites</li>
+                        <li>Incorporates NPMap.js, Park Tiles, Symbol Library, and Places, among others</li>
+                        <li>Many options for customization, including a wide variety of basemaps</li>
+                        <li>Multiple data formats supported for custom overlays</li>
+                <li>Custom configuration options for popup windows and tooltips</li>
+                </ul>
+            </p>
+          </section>
+        </section>
+
+        <!-- Data ? Places Live -->
+        <section>
+          <section>
+            <div class='nps-header-container nps-background-gray'>
+              <div class='nps-header-content'>
+                <div class='nps-header-text'><h1>Real Time Data</h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of Places Live" src="img/yell_live.png" style="height:500px;">
+          </section>
+
+          <section>
+            <div class='nps-header-container nps-background-gray'>
+              <div class='nps-header-content'>
+                <div class='nps-header-text'><h1>Real Time Data</h1></div>
+              </div>
+            </div>
+            <h3>Sometimes you encounter &ldquo;Bumps in the Road&rdquo;</h3>
+            <a href="https://commons.wikimedia.org/wiki/File:2003-08-18_Yellowstone_bison_blocking_the_road.jpg"><img alt="Bison in Road" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/2003-08-18_Yellowstone_bison_blocking_the_road.jpg/640px-2003-08-18_Yellowstone_bison_blocking_the_road.jpg" style="height:400px;"></a>
+            <p class="ref">(source <a href="https://commons.wikimedia.org/wiki/File:2003-08-18_Yellowstone_bison_blocking_the_road.jpg">Wikimedia Commons</a>)</p>
+          </section>
+
+          <section>
+            <div class='nps-header-container nps-background-gray'>
+              <div class='nps-header-content'>
+                <div class='nps-header-text'><h1>Real Time Data</h1></div>
+              </div>
+            </div>
+            <h3>Conditions can change rapidly</h3>
+            <a href="https://www.nps.gov/features/yell/slidefile/personnel/rmvp/winteractivities/Page.htm"><img alt="Snow Covered Road Yellowstone" src="https://www.nps.gov/features/yell/slidefile/personnel/rmvp/winteractivities/Images/16246.jpg" style="height:400px;"></a>
+            <p class="ref">(source <a href="https://www.nps.gov/features/yell/slidefile/personnel/rmvp/winteractivities/Page.htm">nps.gov</a>)</p>
+          </section>
+          <section>
+            <div class='nps-header-container nps-background-gray'>
+              <div class='nps-header-content'>
+                <div class='nps-header-text'><h1>Real Time Data</h1></div>
+              </div>
+            </div>
+            <div style="text-align:left;">
+            <h3 class="highlight">Our current focus:</h3>
+            <ul>
+              <li>Road conditions and incidents</li>
+              <li>Geyser predictions and eruptions</li>
+              <li>Campground openings, closures, and availability</li>
+            </ul>
+            </div>
+          </section>
+          <section>
+            <div class='nps-header-container nps-background-gray'>
+              <div class='nps-header-content'>
+                <div class='nps-header-text'><h1>Real Time Data</h1></div>
+              </div>
+            </div>
+            <div style="text-align:left;">
+            <h3 class="highlight">Improving the visitor experience:</h3>
+            <ul>
+              <li>Instantaneous communication of changes</li>
+              <li>Trip planning</li>
+              <li>Improved place-finding</li>
+              <li>Inter-park routing</li>
+            </ul>
+            </div>
+          </section>
+          <section>
+            <div class='nps-header-container nps-background-gray'>
+              <div class='nps-header-content'>
+                <div class='nps-header-text'><h1>Real Time Data</h1></div>
+              </div>
+            </div>
+            <div style="text-align:left;">
+            <h3 class="highlight">Improving internal operations:</h3>
+            <ul>
+              <li>More efficient data entry</li>
+              <li>Better data management</li>
+              <li>Seamless dissemination of information via web site, email, social media, mobile apps, etc.</li>
+              <li>Shared responsibility for creating and maintaining data</li>
+              <li>Access to archived data to generate reports</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+        <!-- NPS Places Live -->
+        <section>
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of Places Live" src="img/places-live-1.png" style="height:600px;">
+          </section>
+
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <p>
+              <ul>
+                <li>Live road closure and campsite availability status</li>
+                <li>In several parks</li>
+                  <ul>
+                    <li>Blue Ridge Parkway</li>
+                    <li>Yellowstone</li>
+                    <li>Grand Teton *</li>
+                    <li>Golden Gate *</li>
+                  </ul>
+                <li>Update info in one place</li>
+                <li>Screens update on kiosks at park visitor centers</li>
+                <li>Custom basemap design</li>
+              </ul>
+            </p>
+          </section>
+
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of Places Adding A feature" src="img/places-live-adding-1.png" style="height:500px;">
+          </section>
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <a href="https://www.nps.gov/features/yell/slidefile/personnel/rmvp/winteractivities/Page.htm">
+              <img alt="Oversnow Vehicle" src="https://www.nps.gov/features/yell/slidefile/personnel/rmvp/winteractivities/Images/16873.jpg" style="height:400px;">
+            </a>
+            <p class="ref">(source <a href="https://www.nps.gov/features/yell/slidefile/personnel/rmvp/winteractivities/Page.htm">nps.gov</a>)</p>
+          </section>
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of Places Adding a Message" src="img/places-live-messages-2.png" style="height:500px;">
+          </section>
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of Places Adding Construction" src="img/places-live-construction-3.png" style="height:500px;">
+          </section>
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of Places Adding an Incident" src="img/places-live-incidents-4.png" style="height:500px;">
+          </section>
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of Places Live JSON" src="img/places-live-json-5.png" style="height:500px;">
+          </section>
+
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of Places Live Styles" src="img/places-live-styles.png" style="height:500px;">
+          </section>
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of Places Live" src="img/yell_live.png" style="height:500px;">
+          </section>
+
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <h3>Geysers<h3>
+            <img alt="Screenshot of Places Live Geysers" src="img/places-live-geysers.png" style="height:400px;">
+          </section>
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of Places Live Geysers App" src="img/places-live-geysers-app1.png" style="height:500px;">
+          </section>
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <img alt="Screenshot of Places Live Geysers App" src="img/places-live-geysers-app2.png" style="height:500px;">
+          </section>
+
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <h3>Campgrounds<h3>
+            <img alt="Screenshot of Places Live Campgrounds" src="img/places-live-campground.png" style="height:400px;">
+          </section>
+
+          <section>
+            <div class='nps-header-container nps-places-live'>
+              <div class='nps-header-content'>
+                <div class='nps-header-icon'><img alt="NPS Places Icon" src="img/places_icon.png"></div>
+                <div class='nps-header-text'><h1>NPS Places <em>Live</em></h1></div>
+              </div>
+            </div>
+            <img alt="Kiosks in Yellowstone National Park" src="img/yell-kiosks.jpg" style="height:400px;">
+          </section>
+        </section>
+        <!-- Questions -->
+        <section>
+          <section>
+            <h1>Questions?</h1>
+            <h2><a href="mailto:npmap@nps.gov">npmap@nps.gov</a></h2>
+            <h3>Jim McAndrew<a href="https://twitter.com/jimmyrocks"><img src="img/twitter_logo.png" style="height:30px;margin:0 10px 0 20px;">@jimmyrocks</a></h3>
+            <p style="margin-top:100px;"><a href="#/0">< Return to first slide</a></p>
+            <table width = "100%">
+              <tr>
+                <td align="left"><a href="http://gis.colostate.edu/"><img src="img/logo_csu.png" height="80px" /></a></td>
+                <td align="right"><a href="https://www.nps.gov/npmap/"><img src="img/nps_arrowhead.png" height="80px" align="right"/></a></td>
+              </tr>
+            </table>
+          </section>
+          <section>
+            <h2>Questions?</h2>
+            <h3><a href="mailto:npmap@nps.gov">npmap@nps.gov</a></h3>
+            <h4>Jim McAndrew<a href="https://twitter.com/jimmyrocks"><img src="img/twitter_logo.png" style="height:30px;margin:0 10px 0 20px;">@jimmyrocks</a></h4>
+            <p><ul>
+              <li><a href="https://www.nps.gov/yell/planyourvisit/parkroads.htm">Yellowstone Park Roads - Live</a></li>
+              <li><a href="https://www.nps.gov/maps/blri/road-closures/">Blue Ridge Parkway: Real-time Road Closures</a></li>
+            </ul></p>
+            <p style="margin-top:100px;"><a href="#/0">< Return to first slide</a></p>
+
+            <table width = "100%">
+              <tr>
+                <td align="left"><a href="http://gis.colostate.edu/"><img src="img/logo_csu.png" height="80px" /></a></td>
+                <td align="right"><a href="https://www.nps.gov/npmap/"><img src="img/nps_arrowhead.png" height="80px" align="right"/></a></td>
+              </tr>
+            </table>
+          </section>
+
+        </section>
+
+      </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+    <script>
+      Reveal.initialize({
+        center: false,
+        controls: true,
+        height: 700,
+        history: true,
+        overview: false,
+        progress: true,
+        theme: Reveal.getQueryHash().theme || 'nps',
+        transition: Reveal.getQueryHash().transition || 'linear',
+        width: 1000
+      });
+    </script>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-30639876-1','nps.gov');ga('send','pageview');</script>
+  </body>
+</html>

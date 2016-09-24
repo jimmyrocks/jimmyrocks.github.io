@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Managing National Park Service basemap data with OpenStreetMap tools | Slides | NPMap</title>
+    <meta name="description" content="Jim & Taylor's presentation at FOSS4GNA 2016 in Raleigh, NC.">
+    <meta name="author" content="NPMap">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/reveal.min.css" rel="stylesheet">
+    <link href="css/theme/nps.css" id="theme" rel="stylesheet">
+    <link href="lib/css/zenburn.css" rel="stylesheet">
+    <style>
+      .img-circle-icon {
+        border-radius: 50%;
+        width: 15%;
+      }
+      pre.eightbit {
+        color: #00FF00;
+        width: 100%;
+        text-align: left;
+        font-size: 24pt;
+        font-family: consolas,Courier New;
+      }
+      pre.eightbit a {color: #2F2; text-decoration: underline;}
+      pre.eightbit a:link {color: #2F2; text-decoration: underline;}
+      pre.eightbit a:visited {color: #2F2; text-decoration: underline;}
+    </style>
+    <script>
+      document.write('<link href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" media="print" rel="stylesheet">');
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- INTRO -->
+        <section>
+          <section>
+            <img alt="NPMap logo" src="img/npmap_logo.png" style="border-radius:8px;margin-top:100px;">
+            <h2 style="line-height:125%;margin-top:20px;">Digital maps for the<br>National Park Service</h2>
+            <h3>https://www.nps.gov/npmap/slides/foss4gna-2016/</h3>
+          </section>
+          <section>
+            <h1>Jim McAndrew</h1>
+            <h2>
+              <a href="https://www.nps.gov/npmap/" target="_blank">NPMap Developer</a>,<br>
+              <a href="http://www.colostate.edu/" target="_blank">CSU Research Associate</a>
+            </h2>
+            <h1>Taylor Long</h1>
+            <h2>
+              <a href="https://www.nps.gov/npmap/" target="_blank">NPMap Cartographer</a>,<br>
+              <a href="http://www.colostate.edu/" target="_blank">CSU Research Associate</a>
+            </h2>
+          </section>
+          <section>
+            <img alt="National Park Service Arrowhead" src="img/nps-csu.png" style="width:800px;">
+          </section>
+          <section style="font-size:200%;text-align:left;">
+            <ul>
+              <li>
+                <a href="#/1">NPMap Overview</a>
+              </li>
+              <li>
+                <a href="#/2">How we gather NPS data</a>
+              </li>
+              <li>
+                <a href="#/3">How we turn it into beautiful basemaps</a>
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- NPMAP Overview -->
+        <section>
+          <section>
+            <img alt="NPMap Logo" src="img/npmap_logo_color.png" style="border-radius:8px;">
+            <h3>A team of developers, data wranglers, and cartographers…</h3>
+            <img src="https://avatars1.githubusercontent.com/u/10443?v=3&s=400" class="img-circle-icon" />
+            <img src="https://avatars3.githubusercontent.com/u/98192?v=3&s=460" class="img-circle-icon" />
+            <img src="https://avatars0.githubusercontent.com/u/1238636?v=3&s=460" class="img-circle-icon" />
+            <img src="https://avatars3.githubusercontent.com/u/11392872?v=3&s=460" class="img-circle-icon" />
+            <img src="https://avatars2.githubusercontent.com/u/4741443?v=3&s=460" class="img-circle-icon" />
+          </section>
+          <section>
+            <img alt="NPMap Logo" src="img/npmap_logo_color.png" style="border-radius:8px;">
+            <h3>with the goal of creating multi-scale maps for web and mobile use.</h3>
+            <img src="https://avatars1.githubusercontent.com/u/10443?v=3&s=400" class="img-circle-icon" />
+            <img src="https://avatars3.githubusercontent.com/u/98192?v=3&s=460" class="img-circle-icon" />
+            <img src="https://avatars0.githubusercontent.com/u/1238636?v=3&s=460" class="img-circle-icon" />
+            <img src="https://avatars3.githubusercontent.com/u/11392872?v=3&s=460" class="img-circle-icon" />
+            <img src="https://avatars2.githubusercontent.com/u/4741443?v=3&s=460" class="img-circle-icon" />
+          </section>
+
+          <section>
+            <h1>The National Park Service <span class="highlight">preserves</span> and <span class="highlight">protects</span> more than 400 special places</h1>
+          </section>
+          <section data-background="img/yellowstone_national_park.jpg" alt="Yellowstone National Park">
+            <h1>Yellowstone National Park</h1>
+          </section>
+          <section data-background="img/acadia_national_park.jpg" alt="Acadia National Park">
+            <h1 class="highlight-background">Acadia National Park</h1>
+          </section>
+          <section data-background="img/denali_national_park.jpg" alt="Denali National Park">
+            <h1 class="highlight-background">Denali National Park</h1>
+          </section>
+          <section data-background="img/statue_of_liberty.jpg" alt="Statue of Liberty">
+            <h1>Statue of Liberty</h1>
+          </section>
+          <section data-background="img/jefferson_memorial.jpg" alt="Jefferson Memorial">
+            <h1>Jefferson Memorial</h1>
+          </section>
+          <section>
+            <h1>The agency is made up of <span class="highlight">22,000+</span> employees, partners, and contractors</h1>
+          </section>
+          <section>
+            <h1>Many of these employees do not have any experience with GIS</h1>
+          </section>
+          <section>
+            <h2>These employees are an <span class="highlight">incredible resource</span></h2>
+            <ul style="font-size:200%;line-height: 150%;">
+              <li>They are <span class="highlight">dedicated</span> and <span class="highlight">passionate</span></li>
+              <li>They have a wealth of <span class="highlight">local, on-the-ground knowledge</span></li>
+              <li>The have a <span class="highlight">vested interest</span> in the NPS' digital products</li>
+            </ul>
+          </section>
+          <section>
+            <h2>We need to make it easy for these employees to contribute their knowledge</h2>
+          </section>
+
+          <section>
+            <h2>We use the tools behind OpenStreetMap to create an Open Source solution</h2>
+          </section>
+          <section>
+              <h1>Places</h1>
+            <img alt="Screenshot of Places Editor" src="img/places-1.png" style="height:600px;">
+          </section>
+          <section>
+            <h1>We also have data created by Park and Regional GIS Departments</h1>
+            <h3>We include these sources through our <a href="http://github.com/nationalparkservice/places-sync">sync tool</a></h3>
+          </section>
+       </section>
+
+        <!-- BACK END -->
+        <section>
+          <section>
+            <h1>From <span class="highlight">Places</span><br> to <span class="highlight">Park Tiles</span></h1>
+          </section>
+          <section>
+            <pre class='eightbit' style='font-size: 18pt;'>
+           ,--.  ,--.        ,--.,--.    ,--.       ,--.                   ,--.
+           |  ,'.|  |,--.,--.|  ||  |    |  | ,---. |  | ,--,--.,--,--,  ,-|  |
+           |  |' '  ||  ||  ||  ||  |    |  |(  .-' |  |' ,-.  ||      \' .-. |
+           |  | `   |'  ''  '|  ||  |    |  |.-'  `)|  |\ '-'  ||  ||  |\ `-' |
+           `--'  `--' `----' `--'`--'    `--'`----' `--' `--`--'`--''--' `---'
+
+,--.  ,--.          ,--.  ,--.                       ,--.    ,------.                ,--.
+|  ,'.|  | ,--,--.,-'  '-.`--' ,---. ,--,--,  ,--,--.|  |    |  .--. ' ,--,--.,--.--.|  |,-.
+|  |' '  |' ,-.  |'-.  .-',--.| .-. ||      \' ,-.  ||  |    |  '--' |' ,-.  ||  .--'|     /
+|  | `   |\ '-'  |  |  |  |  |' '-' '|  ||  |\ '-'  ||  |    |  | --' \ '-'  ||  |   |  \  \
+`--'  `--' `--`--'  `--'  `--' `---' `--''--' `--`--'`--'    `--'      `--`--'`--'   `--'`--'
+            </pre>
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║             .▄▄▄  ▄• ▄▌▄▄▄ ..▄▄ ·▄▄▄▄▄                  ║
+║             ▐▀•▀█ █▪██▌▀▄.▀·▐█ ▀.•██                    ║
+║             █▌·.█▌█▌▐█▌▐▀▀▪▄▄▀▀▀█▄▐█.▪                  ║
+║             ▐█▪▄█·▐█▄█▌▐█▄▄▌▐█▄▪▐█▐█▌·                  ║
+║             ·▀▀█.  ▀▀▀  ▀▀▀  ▀▀▀▀ ▀▀▀                   ║
+╟─────────────────────────────────────────────────────────╢
+║         The President has signed a bill declaring       ║
+║          Null Island National Park as the newest        ║
+║          Unit of the National Park Service!             ║
+║                                                         ║
+║         Your team, NPMap, has been tasked with          ║
+║         collecting data for this park and making        ║
+║        a beautiful online map for visitors using        ║
+║          only Open Source Tools and services.           ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+          <section>
+            <img src="img/jim/playerselect.gif" alt="Player Select" style="width:90%;height:90%;">
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║ Full Name: Jimmy Rocks                                  ║
+║ Position: Developer                                     ║
+╟────────┬────────────────────────────────────────────────╢
+║ Skills │                                                ║
+╟────────┘                                                ║
+║                                                         ║
+║ Node.js....................░░░▒▒▒▒▒▒▓▓▓          4/5    ║
+║                                                         ║
+║ Bourne Again Shell.........░░░▒▒▒▒▒▒             3/5    ║
+║                                                         ║
+║ Sequential Query Language..░░░▒▒▒▒▒▒▓▓▓          4/5    ║
+║                                                         ║
+║ OpenStreetMap..............░░░▒▒▒▒▒▒▓▓▓███       5/5    ║
+║                                               ♥︎ ♥︎ ♥︎ ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║               ________  ___  _    __                    ║
+║                | |/ / \/ / \| |  ( (`                   ║
+║                |_|\_\_/\_\_/|_|___)_)                   ║
+╟─────────────────────────────────────────────────────────╢
+║                                                         ║
+║ <a href="http://mapbox.com">Mapbox</a>:   Provides hosting for our vector tiles         ║
+║                                                         ║
+║ <a href="http://cartodb.com">CartoDB</a>:   Online Database with fast dynamic querying   ║
+║                                                         ║
+║ <a href="http://OpenStreetMap.com" target="_blank">OpenStreetMap</a>:    iD Editor &amp; JOSM for collecting data  ║
+║                                                         ║
+║ Internal:   Park, Regional, and Federal GIS Departments ║
+║                                               ♥︎ ️♥︎ ♥︎ ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║ Where Is Null Island National Park?                     ║
+╟─────────────────────────────────────────────────────────╢
+║                                                         ║
+║ Player #3 (Chad Lawlis) is on the task!                 ║
+║                                                         ║
+║   Chad works with the legislative &amp; interpretive        ║
+║     boundaries.                                         ║
+║                                                         ║
+║   He determines a boundary to be used on the web map.   ║
+║                                                         ║
+║   This boundary will be stored in a PostGIS database    ║
+║     that is synchronized to CartoDB every evening.      ║
+║                                               ♥︎ ♥︎ ♥︎ ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+          <section>
+            <img src="img/jim/boundary.png" alt="Park Boundary" style="width:90%;height:90%;">
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║                 Gathering the Features                  ║
+╟─────────────────────────────────────────────────────────╢
+║                                                         ║
+║                         Roads                           ║
+║                                                         ║
+║                        Trails                           ║
+║                                                         ║
+║                                               ♥︎ ♥︎ ♥︎ ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║                 Gathering the Features                  ║
+╟─────────────────────────────────────────────────────────╢
+║ NPMap has a great tool called <a href="https://www.nps.gov/npmap/blog/introducing-places.html" target="_blank">Places</a>                    ║
+║                                                         ║
+║ Places allows people in the National Park Service to    ║
+║   Create-Read-Update-Delete data displayed on the map   ║
+║   within Parks.                                         ║
+║                                                         ║
+║ Rangers at Null Island National Park took GPS tracks    ║
+║   of Roads and Trails within the Park, and used the     ║
+║   iD Editor to digitize the data.                       ║
+║                                               ♥︎ ♥︎ ♥︎ ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+              </pre>
+          </section>
+          <section>
+            <img src="img/jim/id.png" alt="Park Lines" style="height:600px;">
+          </section>
+          <section>
+            <img src="img/jim/lines.png" alt="Park Lines" style="height:600px;">
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║                 Gathering the Features                  ║
+╟─────────────────────────────────────────────────────────╢
+║                                                         ║
+║                   Building Footprints                   ║
+║                                                         ║
+║                      Parking Lots                       ║
+║                                                         ║
+║                    Points Of Interest                   ║
+║                                               ♥︎ ️♥︎ ♥︎ ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║          ___           _   _  _                         ║
+║         | _ ) __ _  __| | | \| | ___ __ __ __ ___       ║
+║         | _ \/ _` |/ _` | | .` |/ -_)\ V  V /(_-&lt;       ║
+║         |___/\__,_|\__,_| |_|\_|\___| \_/\_/ /__/       ║
+╟─────────────────────────────────────────────────────────╢
+║                                                         ║
+║    The features are stored in an closed source format!  ║
+║                                                         ║
+║   You will need to convert to the OpenStreetMap format. ║
+║                                                         ║
+║                     Lose One Health                     ║
+║                                                 ♥︎ ♥︎ ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║           Building a Synchronization Tool               ║
+╟─────────────────────────────────────────────────────────╢
+║                                                         ║
+║ You must:                                               ║
+║   Determine "TRANSLATIONS" in order to use closed       ║
+║   source data alongside OpenStreetMap data.             ║
+║                                                         ║
+║ Convert data from closed source into a format           ║
+║   compatible with OpenStreetMap.                        ║
+║                                                         ║
+║ Keep a detailed log track of all updates to make sure   ║
+║   changes are replicated .                              ║
+║                                                   ♥︎ ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║________   __   _     __  _     __ ______  ___  _     __ ║
+║ | || |_) / /\ | |\ |( (`| |   / /\ | || |/ / \| |\ |( ('║
+║ |_||_| \/_/--\|_| \|_)_)|_|__/_/--\|_||_|\_\_/|_| \|_)_)║
+╟─────────────────────────────────────────────────────────╢
+║   You are required to spend many many months working    ║
+║  with standards committees and stakeholders in Parks.   ║
+║                                                         ║
+║  You must use these resources to determine how to use   ║
+║  OpenStreetMap tags to represent everything needed for  ║
+║               National Park Service Map.                ║
+║                                                       ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+          </pre>
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║       ___               _   _  _                        ║
+║      / __| ___  ___  __| | | \| | ___ __ __ __ ___      ║
+║     | (_ |/ _ \/ _ \/ _` | | .` |/ -_)\ V  V /(_-&gt;      ║
+║      \___|\___/\___/\__,_| |_|\_|\___| \_/\_/ /__/      ║
+╟─────────────────────────────────────────────────────────╢
+║                                                         ║
+║   The Closed Source Data Format has a featured called   ║
+║      "Editor Tracking", it will keep a log when         ║
+║                    changes are made.                    ║
+║                                                         ║
+║   The Closed Source company offers a tool to convert    ║
+║      their data to into the GeoJSON format called       ║
+║      Terraformer, this will make it easy to use!        ║
+║                                                     ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║      _,, __, _ _,_,___, _,_, _ ____,_,___ _ _,_, _      ║
+║     (_ \ ||\ |/ `|_||_)/ \|\ | |` //_\ |  |/ \|\ |      ║
+║     , ) \|| \|\ ,| || \\ /| \| | / | | |  |\ /| \|      ║
+║      ~   )~  ~ ~ ~ ~~ ~ ~ ~  ~ ~~~~~ ~ ~  ~ ~ ~  ~      ║
+║         ~'                                              ║
+╟─────────────────────────────────────────────────────────╢
+║                                                         ║
+║         You can get to work building a process!         ║
+║                                                         ║
+║     You will read all data updated from the source      ║
+║             source since the last sync.                 ║
+║                                                         ║
+║    You will then compare these updates with data that   ║
+║      has already been synchronized to determine if      ║
+║                 any records were deleted.               ║
+║                                                   ♥︎ ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║      _,, __, _ _,_,___, _,_, _ ____,_,___ _ _,_, _      ║
+║     (_ \ ||\ |/ `|_||_)/ \|\ | |` //_\ |  |/ \|\ |      ║
+║     , ) \|| \|\ ,| || \\ /| \| | / | | |  |\ /| \|      ║
+║      ~   )~  ~ ~ ~ ~~ ~ ~ ~  ~ ~~~~~ ~ ~  ~ ~ ~  ~      ║
+║         ~'                                              ║
+╟─────────────────────────────────────────────────────────╢
+║                                                         ║
+║    1)  Remove deleted records                           ║
+║    2)  Convert the Updates to the correct format        ║
+║        (OpenStreetMap XML)                              ║
+║    3)  push the records into the database               ║
+║                                                 ♥︎ ♥︎ ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+          <section>
+            <img src="img/jim/poly.png" alt="Park Lines" style="height:600px;">
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║              ·▄▄▄▄• ▄▌▄▄▄▄▄▄• ▄▌▄▄▄  ▄▄▄ .              ║
+║              ▐▄▄·█▪██▌•██  █▪██▌▀▄ █·▀▄.▀·              ║
+║              ██▪ █▌▐█▌ ▐█.▪█▌▐█▌▐▀▀▄ ▐▀▀▪▄              ║
+║              ██▌.▐█▄█▌ ▐█▌·▐█▄█▌▐█•█▌▐█▄▄▌              ║
+║              ▀▀▀  ▀▀▀  ▀▀▀  ▀▀▀ .▀  ▀ ▀▀▀               ║
+║           • ▌ ▄ ·. ▪  .▄▄ · .▄▄ · ▪         ▐ ▄         ║
+║           ·██ ▐███▪██ ▐█ ▀. ▐█ ▀. ██ ▪     •█▌▐█        ║
+║           ▐█ ▌▐▌▐█·▐█·▄▀▀▀█▄▄▀▀▀█▄▐█· ▄█▀▄ ▐█▐▐▌        ║
+║           ██ ██▌▐█▌▐█▌▐█▄▪▐█▐█▄▪▐█▐█▌▐█▌.▐▌██▐█▌        ║
+║           ▀▀  █▪▀▀▀▀▀▀ ▀▀▀▀  ▀▀▀▀ ▀▀▀ ▀█▄▀▪▀▀ █▪        ║
+╟─────────────────────────────────────────────────────────╢
+║                                                         ║
+║                      REPEAT OFTEN                       ║
+║                                                 ♥︎ ♥︎ ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║  ___         _           ___            _               ║
+║ |   \  __ _ | |_  __ _  | _ \ ___ __ __(_) ___ __ __ __ ║
+║ | |) |/ _` ||  _|/ _` | |   // -_)\ V /| |/ -_)\ V  V / ║
+║ |___/ \__,_| \__|\__,_| |_|_\\___| \_/ |_|\___| \_/\_/  ║
+╟─────────────────────────────────────────────────────────╢
+║                                                         ║
+║ Sources:                                                ║
+╟─────────────────┬─────────────────┬─────────────────────╢
+║  Other Players  │ Digitized in iD │ Sync'ed from Source ║
+╟─────────────────┼─────────────────┼─────────────────────╢
+║ Park Boundaries │ Trails          │ Buildings           ║
+║                 │ Roads           │ Parking Lots        ║
+║                 │                 │ Points of Interest  ║
+╟─────────────────┴─────────────────┴─────────────────────╢
+║                                                         ║
+║                                               ♥︎ ♥︎ ♥︎ ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+          <section>
+            <img src="img/jim/all.png" alt="Park Lines" style="height:600px;">
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║   #####                                            ###  ║
+║  #     # #    #  ####   ####  ######  ####   ####  ###  ║
+║  #       #    # #    # #    # #      #      #      ###  ║
+║   #####  #    # #      #      #####   ####   ####   #   ║
+║        # #    # #      #      #           #      #      ║
+║  #     # #    # #    # #    # #      #    # #    # ###  ║
+║   #####   ####   ####   ####  ######  ####   ####  ###  ║
+╟─────────────────────────────────────────────────────────╢
+║  Next Steps:                                            ║
+║                                                         ║
+║ * Use an all-SQL version of OpenStreetMap’s osm2pgsql   ║
+║   to convert the OpenStreetMap data into PostGIS.       ║
+║                                                         ║
+║ * Use Mapbox Studio Classic to render the Line and      ║
+║   Polygon Data into Vector Tiles.                       ║
+║                                               ♥︎ ♥︎ ♥︎ ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+          <section>
+            <pre class='eightbit'>
+╔═════════════════════════════════════════════════════════╗
+║   #####                                            ###  ║
+║  #     # #    #  ####   ####  ######  ####   ####  ###  ║
+║  #       #    # #    # #    # #      #      #      ###  ║
+║   #####  #    # #      #      #####   ####   ####   #   ║
+║        # #    # #      #      #           #      #      ║
+║  #     # #    # #    # #    # #      #    # #    # ###  ║
+║   #####   ####   ####   ####  ######  ####   ####  ###  ║
+╟─────────────────────────────────────────────────────────╢
+║  Next Steps:                                            ║
+║                                                         ║
+║ * Use the same sync tool load data from PostGIS into    ║
+║   CartoDB, who will now host the Point Data.            ║
+║                                                         ║
+║ * Allow the Cartography team to transform the raw       ║
+║   data into a visitor facing multiscale map.            ║
+║                                               ♥︎ ♥︎ ♥︎ ♥︎ ♥︎ ║
+╚═════════════════════════════════════════════════════════╝
+            </pre>
+          </section>
+
+      </section>
+
+      <!-- FRONT END -->
+
+      <!-- Park Tiles Overview -->
+      <section>
+
+        <section>
+          <h1>Park Tiles</h1>
+          <h2>A suite of <span class="highlight">online basemaps</span>, designed to fit the <span class="highlight">NPS graphic identity</span></h2>
+        </section>
+        <section data-background="img/pt3-full-standard.png" alt="Park Tiles US overview">
+        </section>
+        <section data-background="img/pt3-nc-standard.png" alt="Park Tiles in North Carolina">
+        </section>
+        <section data-background="img/pt3-close.png" alt="Park Tiles in Great Smoky Mountains">
+        </section>
+
+        <section>
+          <h1>Park Tiles is <span class="highlight">easy to use</span></h1>
+          <h2 style="line-height: 1.5em;">
+            <ul>
+              <li>npmap.js</li>
+              <li>NPMap Builder</li>
+              <li>ArcGIS Online & Portal</li>
+            </ul>
+          </h2>
+        </section>
+
+        <section>
+          <h1>Park Tiles is <span class="highlight">flexible</span></h1>
+          <h2 style="line-height: 1.5em;text-align:left;">
+            <ul>
+              <li>Standard</li>
+              <li>Imagery</li>
+              <li>Slate</li>
+              <li>Light</li>
+            </ul>
+          </h2>
+        </section>
+
+        <section data-background="img/pt3-full-standard.png" alt="Park Tiles Standard style">
+          <h2 class="highlight-background">Park Tiles - Standard</h2>
+        </section>
+        <section data-background="img/pt3-full-imagery.png" alt="Park Tiles Imagery style">
+          <h2 class="highlight-background">Park Tiles - Imagery</h2>
+        </section>
+        <section data-background="img/pt3-full-slate.png" alt="Park Tiles Slate style">
+          <h2 class="highlight-background">Park Tiles - Slate</h2>
+        </section>
+        <section data-background="img/pt3-full-light.png" alt="Park Tiles Light style">
+          <h2 class="highlight-background">Park Tiles - Light</h2>
+        </section>
+
+      </section>
+
+      <!-- Park Tiles Explanation -->
+      <section>
+
+        <section>
+          <h1>What's in Park Tiles?</h1>
+          <ul style="font-size:200%;line-height:1.5em;text-align:left;">
+            <li>OpenStreetMap <span class="highlight">outside</span> parks</li>
+            <li>NPS Places <span class="highlight">inside</span> parks</li>
+          </ul>
+        </section>
+        <section>
+          <h1>
+            <span class="highlight">Park Tiles 2</span><br> vs. <br>
+            <span class="highlight">Park Tiles 3</span>
+          </h1>
+        </section>
+        <section data-transition="fade">
+          <h2>Park Tiles 2: <span class="highlight">OSM + NPS</span></h2>
+          <img alt="Park Tiles 2 setup" src="img/pt3-stack-simple-pt2.png" style="width:800px;">
+        </section>
+        <section data-transition="fade">
+          <h2>Park Tiles 3: <span class="highlight">OSM / NPS</span></h2>
+          <img alt="Park Tiles 3 setup" src="img/pt3-stack-simple-pt3.png" style="width:800px;">
+        </section>
+        <section style="text-align:left;">
+          <h2>Layers upon layers upon layers...</h2>
+          <ul style="font-size:200%;line-height:1.5em;">
+            <li>Base</li>
+            <li>Middle</li>
+            <li>Overlay</li>
+            <li>Points of Interest</li>
+          </ul>
+        </section>
+        <section data-transition="fade">
+          <h2>Base</h2>
+          <img alt="Base" src="img/pt3-stack-base.png" style="width:800px;">
+        </section>
+        <section data-transition="fade">
+          <h2>Middle</h2>
+          <img alt="Middle" src="img/pt3-stack-middle.png" style="width:800px;">
+        </section>
+        <section data-transition="fade">
+          <h2>Overlay</h2>
+          <img alt="Overlay" src="img/pt3-stack-overlay.png" style="width:800px;">
+        </section>
+        <section data-transition="fade">
+          <h2>Points of Interest</h2>
+          <img alt="Points of Interest" src="img/pt3-stack-poi.png" style="width:800px;">
+        </section>
+
+        <section data-transition="none">
+          <h2 style="text-align:left;">Together: <span class="highlight">base</span></h2>
+          <img alt="Points of Interest" src="img/pt3-stack-all-1.png" style="width:800px;">
+        </section>
+        <section data-transition="none">
+          <h2 style="text-align:left;">Together: base + <span class="highlight">middle</span></h2>
+          <img alt="Points of Interest" src="img/pt3-stack-all-2.png" style="width:800px;">
+        </section>
+        <section data-transition="none">
+          <h2 style="text-align:left;">Together: base + middle + <span class="highlight">overlay</span></h2>
+          <img alt="Points of Interest" src="img/pt3-stack-all-3.png" style="width:800px;">
+        </section>
+        <section data-transition="none">
+          <h2 style="text-align:left;">Together: base + middle + overlay + <span class="highlight">poi</span></h2>
+          <img alt="Points of Interest" src="img/pt3-stack-all-4.png" style="width:800px;">
+        </section>
+
+      </section>
+
+      <!-- Park Tiles Technology Stack -->
+      <section>
+
+        <section>
+          <h1>How we make it</h1>
+        </section>
+        <section style="text-align:left;">
+          <h2>Park Tiles uses:</h2>
+            <ul style="font-size:200%;line-height:1.5em;">
+              <li>Mapbox - <span class="highlight">vector tiles</span></li>
+              <li>CartoDB - <span class="highlight">POI vector overlay</span></li>
+            </ul>
+        </section>
+        <section>
+          <h2>Tiles: Mapbox Studio <span class="highlight">Classic</span> + <span class="highlight">CartoCSS</span></h2>
+          <img alt="Mapbox Studio Classic" src="img/mapbox-studio-classic.png" style="width:1000px;">
+        </section>
+        <section style="text-align:left;">
+          <h2>Mapbox Sources</h2>
+          <ul style="font-size:150%;line-height:1.5em;">
+            <li>Streets</li>
+            <li>Terrain</li>
+            <li>Satellite</li>
+          </ul>
+          <br><br>
+          <h2>NPS Sources</h2>
+          <ul style="font-size:150%;line-height:1.5em;">
+            <li>NPS Places</li>
+            <li>Park Boundaries</li>
+          </ul>
+        </section>
+        <section>
+          <h2>POIs: CartoDB <span class="highlight">public tables</span></h2>
+          <img alt="CartoDB" src="img/cartodb.png" style="width:1000px;">
+        </section>
+        <section>
+          <img alt="Park Tiles Overview Diagram" src="img/park-tiles-diagram.png" style="width:900px;">
+        </section>
+
+      </section>
+
+      <!-- Finale -->
+      <section>
+
+        <section>
+          <h1>Park Tiles in the <span class="highlight">wild</span>...</h1>
+        </section>
+        <section>
+          <h2><a href="https://www.nps.gov/state/co/index.htm" target="_blank">NPS.gov State Pages</a></h2>
+          <img alt="nps.gov State Pages" src="img/ex-state-pages.png" style="width:800px;">
+        </section>
+        <section>
+          <h2><a href="https://www.nps.gov/grsm/planyourvisit/maps.htm" target="_blank">Great Smoky Mountains NP / Maps</a></h2>
+          <img alt="Great Smoky Mountains National Park Maps page" src="img/ex-grsm.png" style="width:800px;">
+        </section>
+        <section>
+          <h2><a href="https://www.nps.gov/romo/planyourvisit/camping.htm" target="_blank">Rocky Mountain NP / Campgrounds</a></h2>
+          <img alt="Rocky Mountain National Park Campgrounds page" src="img/ex-romo.png" style="width:800px;">
+        </section>
+        <section>
+          <h2>Places Mobile Apps</h2>
+          <img alt="Yellowstone National Park Places Mobile app" src="img/yell-mobile.png" style="width:600px;">
+        </section>
+
+      </section>
+
+      <!-- FUTURE WORK -->
+      <section>
+        <section>
+          <h1>What's next?</h1>
+          <ul style="font-size:200%;line-height:1.5em;">
+            <li>More/better data</li>
+            <li>NPS Data for land and water</li>
+            <li>POI display improvements</li>
+            <li>Mapbox GL (?)</li>
+          </ul>
+        </section>
+        <section data-background="img/denali_national_park.jpg" alt="Denali National Park">
+        </section>
+      </section>
+
+      <!-- QUESTIONS -->
+      <section>
+        <section>
+          <h1>Questions?</h1>
+          <h2>
+            <a href="https://twitter.com/jimmyrocks" target="_blank">@jimmyrocks</a><br>
+            <a href="mailto:james_mcandrew@partner.nps.gov">james_mcandrew@partner.nps.gov</a><br>
+            <br>
+            <a href="https://twitter.com/mtaylorlong" target="_blank">@mtaylorlong</a><br>
+            <a href="mailto:taylor_long@partner.nps.gov">taylor_long@partner.nps.gov</a><br>
+            <br>
+          </h2>
+
+          <h3>
+            <a href="https://www.nps.gov/npmap/" target="_blank">https://www.nps.gov/npmap/</a><br>
+            <a href="https://twitter.com/npmap" target="_blank">@npmap</a> -
+            <a href="mailto:npmap@nps.gov">npmap@nps.gov</a>
+          </h3>
+        </section>
+      </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+    <script>
+      Reveal.initialize({
+        center: false,
+        controls: true,
+        height: 800,
+        history: true,
+        overview: false,
+        progress: true,
+        theme: Reveal.getQueryHash().theme || 'nps',
+        transition: Reveal.getQueryHash().transition || 'linear',
+        width: 1200
+      });
+    </script>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-30639876-1','nps.gov');ga('send','pageview');</script>
+  </body>
+</html>
