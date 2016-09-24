@@ -2,7 +2,9 @@
 layout: post
 title:  "PostgreSQL Materialized Views"
 date:   2015-11-19 19:45:00 -0600
-image: http://jimmyrocks.github.io/postgis_day_2015/img/5_join_raw.png
+image:  /images/presentations/5_join_raw.png
+thumbnail:  /images/presentations/thumbnails/5_join_raw-160.png
+thumbnail-lg:  /images/presentations/thumbnails/5_join_raw-640.png
 ---
 
 <iframe width="560" height="315" src="http://jimmyrocks.github.io/postgis_day_2015/index.html" frameborder="0" allowfullscreen></iframe>
