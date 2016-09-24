@@ -7,10 +7,14 @@
   {% assign _active = "active" %}
 {% endif %}
 {% assign _placeholder = "https://placeholdit.imgix.net/~text?txtsize=34&txt=" | append: post.title | append: "&w=350&h=156" %}
-{% if post.image == null %}
-  {% assign _image = _placeholder %}
+{% if post.thumbnail-lg != null %}
+  {% assign _image = post.thumbnail-lg %}
+{% else %}
+  {% if post.image == null %}
+    {% assign _image = _placeholder %}
   {% else %}
-  {% assign _image = post.image %}
+    {% assign _image = post.image %}
+  {% endif %}
 {% endif %}
 
 
