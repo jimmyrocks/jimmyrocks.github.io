@@ -2,7 +2,9 @@
 layout: post
 title:  "State of the Map US 2013: USGS National Map Corps"
 date:   2013-06-09 11:30:28 -0700
-image: https://i.vimeocdn.com/video/440268523.webp?mw=1920&mh=1080&q=70
+image: /images/presentations/TNMCorps2013.jpg
+thumbnail:  /images/presentations/thumbnails/TNMCorps2013-160.jpg
+thumbnail-lg:  /images/presentations/thumbnails/TNMCorps2013-640.jpg
 ---
 
 <iframe src="https://player.vimeo.com/video/68099569" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
