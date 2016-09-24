@@ -2,7 +2,9 @@
 layout: post
 title:  "Park Tiles — Customizing OpenStreetMap Cartography and Infrastructure"
 date:   2014-04-13 04:30:00 -0400
-image: https://i.vimeocdn.com/video/471487358.webp?mw=1920&mh=1080&q=70
+image:  /images/presentations/SOTMUS_2014.jpg
+thumbnail:  /images/presentations/thumbnails/SOTMUS_2014-160.jpg
+thumbnail-lg:  /images/presentations/thumbnails/SOTMUS_2014-640.jpg
 ---
 
 <iframe src="https://player.vimeo.com/video/91926116" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
