@@ -6,6 +6,6 @@ image: /images/photography/BalloonFestival.jpg
 thumbnail:  /images/photography/thumbnails/BalloonFestival-160.jpg
 thumbnail-lg: /images/photography/thumbnails/BalloonFestival-640.jpg
 ---
-<a data-flickr-embed="true" data-header="true" data-footer="true"  href="https://www.flickr.com/photos/robotbrainz/albums/72157603435379061" title="Jimmy - Hydrants"><img src="https://c2.staticflickr.com/2/1225/1467555057_b9c39a4289.jpg" width="333" height="500" alt="Jimmy - Hydrants"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+<a data-flickr-embed="true" data-header="true" data-footer="true"  href="//www.flickr.com/photos/robotbrainz/albums/72157673169037250" title="Jimmy - 24th Annual White Sands Balloon Invitational"><img src="//c5.staticflickr.com/8/7475/29884124956_1de31a37db.jpg" width="500" height="333" alt="Jimmy - 24th Annual White Sands Balloon Invitational"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 
 <p>Since I was already in New Mexico to present at AutoCarto 2016, we decided to take a trip to White Sands National Monument for the 24th Annual White Sands Balloon Invitational. The White Sands is an amazing place for a hot air balloon launch. I imaging that the views from the balloons are amazing as well.</p>
