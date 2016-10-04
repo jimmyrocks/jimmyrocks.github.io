@@ -3,7 +3,7 @@ layout: post
 title:  "Less Bots, More Humans: Using MapRoulette to Import Data"
 date:   2015-06-07 12:00:00 -0400
 image:  /images/presentations/sotmus-2015.png
-thumbnail:  /images/presentations/thumbnails/sotmus-2015-160.png
+thumbnail:  /images/presentations/thumbnails/sotmus-2015-320.png
 thumbnail-lg:  /images/presentations/thumbnails/sotmus-2015-640.png
 ---
 
