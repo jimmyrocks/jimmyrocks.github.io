@@ -3,7 +3,7 @@ layout: post
 title:  "Real Time Map Data in the National Park Service"
 date:   2016-01-11 20:30:00 -0400
 image:  /images/presentations/places-live-1.png
-thumbnail:  /images/presentations/thumbnails/places-live-1-160.png
+thumbnail:  /images/presentations/thumbnails/places-live-1-320.png
 thumbnail-lg:  /images/presentations/thumbnails/places-live-1-640.png
 ---
 
