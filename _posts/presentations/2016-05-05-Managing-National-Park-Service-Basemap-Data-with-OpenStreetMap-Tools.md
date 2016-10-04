@@ -3,7 +3,7 @@ layout: post
 title:  "Managing National Park Service Basemap Data with OpenStreetMap Tools"
 date:   2016-05-05 10:30:00 -0400
 image: "/images/presentations/pt3-stack-all-3.png"
-thumbnail: "/images/presentations/thumbnails/pt3-stack-all-3-160.png"
+thumbnail: "/images/presentations/thumbnails/pt3-stack-all-3-320.png"
 thumbnail-lg: "/images/presentations/thumbnails/pt3-stack-all-3-640.png"
 ---
 
