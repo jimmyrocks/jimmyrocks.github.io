@@ -3,7 +3,7 @@ layout: post
 title:  "State of the Map US 2013: USGS National Map Corps"
 date:   2013-06-09 11:30:28 -0700
 image: /images/presentations/TNMCorps2013.jpg
-thumbnail:  /images/presentations/thumbnails/TNMCorps2013-160.jpg
+thumbnail:  /images/presentations/thumbnails/TNMCorps2013-320.jpg
 thumbnail-lg:  /images/presentations/thumbnails/TNMCorps2013-640.jpg
 ---
 
