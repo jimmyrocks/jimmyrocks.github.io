@@ -3,7 +3,7 @@ layout: post
 title:  "Park Tiles — Customizing OpenStreetMap Cartography and Infrastructure"
 date:   2014-04-13 04:30:00 -0400
 image:  /images/presentations/SOTMUS_2014.jpg
-thumbnail:  /images/presentations/thumbnails/SOTMUS_2014-160.jpg
+thumbnail:  /images/presentations/thumbnails/SOTMUS_2014-320.jpg
 thumbnail-lg:  /images/presentations/thumbnails/SOTMUS_2014-640.jpg
 ---
 
