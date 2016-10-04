@@ -4,7 +4,7 @@ div.navbar-container {
 
 nav.navbar-inverse {
   background-color: $color-secondary-1-4;
-  background-image: -webkit-linear-gradient(top,$color-secondary-1-0 0%,$color-secondary-1-4 100%);
+  background-image: linear-gradient(to top,$color-secondary-1-0 0%,$color-secondary-1-4 100%);
   border: none;
 }
 
@@ -12,7 +12,7 @@ a.active.navbar-brand,
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
   color: $background-color;
   background-color: $color-secondary-1-2;
-  background-image: -webkit-linear-gradient(top,$color-secondary-1-0 100%,$color-secondary-1-2 0%);
+  background-image: linear-gradient(to top,$color-secondary-1-0 100%,$color-secondary-1-2 0%);
 }
 
 div.footer-wrapper {
@@ -103,19 +103,43 @@ p.post-thumbnail-title {
 }
 
 .carousel-caption-custom {
-  background-color: rgba(0,0,0,.9);
-  background-image: -webkit-linear-gradient(top, rgba(0,0,0,.5) 0%,rgba(0,0,0,1) 100%);
+  background-image: linear-gradient(to top, rgba(0,0,0,.7) 0%,rgba(0,0,0,1) 100%);
   color: #FFF;
-  height: 100px;
+  height: 60px;
   padding-right: 15px;
   padding-left: 15px;
 }
+
 .carousel-title {
   color: $color-secondary-1-1;
   font-size: 1.5em;
   font-weight: 600;
   font-family: "Muli", sans-serif;
+  line-height: 1;
+  display: block;
 }
+
+@media (max-width: 767px) {
+  .carousel-title {
+     font-size: 1.3em;
+  }
+}
+@media (max-width: 700px) {
+  .carousel-title {
+     font-size: 1.2em;
+  }
+}
+@media (max-width: 600px) {
+  .carousel-title {
+     font-size: 1.1em;
+  }
+}
+@media (max-width: 400px) {
+  .carousel-title {
+     font-size: .9em;
+  }
+}
+
 .carousel-description {
   text-indent: 2em;
 }
@@ -139,17 +163,24 @@ div#headerCarousel {
 
 @media (min-width: 768px) {
   .carousel-indicators {
-      bottom: 60px;
-      right: -200px;
+      bottom: 20px;
+      right: -187px;
       left: auto;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .carousel-indicators {
-      bottom: 60px;
-      right: -20%;
+      bottom: 20px;
+      right: -19%;
       left: auto;
   }
+}
+
+.img-wrapper img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%
 }
 
 img#about-photo {
@@ -161,4 +192,8 @@ a.flickr img {
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+.social-media-list {
+    font-size: 9pt;
 }
