@@ -1,12 +1,14 @@
 {% assign _title = post.title %}
 {% assign _description = post.description %}
 {% assign _date = post.date | date: "%b %-d, %Y" %}
+{% assign _path_parts = post.path | split: '/' %}
+{% assign _post_type = _path_parts[1] | capitalize %}
 {% assign _active = "" %}
 {% assign _index = forloop.index %}
 {% if _index == 1 %}
   {% assign _active = "active" %}
 {% endif %}
-{% assign _placeholder = "https://placeholdit.imgix.net/~text?txtsize=34&txt=" | append: post.title | append: "&w=350&h=156" %}
+{% assign _placeholder = "https://placeholdit.imgix.net/~text?txtsize=56&txt=" | append: post.title | append: "&w=640&h=300" %}
 {% if post.thumbnail-lg != null %}
   {% assign _image = post.thumbnail-lg %}
 {% else %}
@@ -21,7 +23,7 @@
 <div class="item {{_active}}">
   <img class="first-slide carousel-slide" src="{{_image}}" alt="{{ _title }}">
   <div class="carousel-caption-custom">
-    <time>{{_date}}</time><br/><span class="carousel-title"><a href="{{post.url}}">{{ _title }}</a></span>
+    <time>{{_date}}</time>&nbsp;&nbsp;&nbsp;&nbsp;{{_post_type}}<br/><span class="carousel-title"><a href="{{post.url}}">{{ _title }}</a></span>
     <div class="carousel-description">{{ _description }}</div> 
   </div>
 </div>
