@@ -3,7 +3,7 @@ layout: post
 title:  "Using OpenStreetMap Infrastructure to Collect Data for our National Parks"
 date:   2014-09-10 11:00:00 -0700
 image:  /images/presentations/FOSS4G_2014.jpg
-thumbnail:  /images/presentations/thumbnails/FOSS4G_2014-160.jpg
+thumbnail:  /images/presentations/thumbnails/FOSS4G_2014-320.jpg
 thumbnail-lg:  /images/presentations/thumbnails/FOSS4G_2014-640.jpg
 ---
 
