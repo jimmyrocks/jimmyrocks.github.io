@@ -3,7 +3,7 @@ layout: post
 title:  "PostgreSQL Materialized Views"
 date:   2015-11-19 19:45:00 -0600
 image:  /images/presentations/5_join_raw.png
-thumbnail:  /images/presentations/thumbnails/5_join_raw-160.png
+thumbnail:  /images/presentations/thumbnails/5_join_raw-320.png
 thumbnail-lg:  /images/presentations/thumbnails/5_join_raw-640.png
 ---
 
