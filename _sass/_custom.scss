@@ -16,7 +16,7 @@ a.active.navbar-brand,
 }
 
 div.footer-wrapper {
-  background-color: $background-color;
+  // background-color: $background-color;
   // background-image: radial-gradient(lighten($color-secondary-2-1, 7%) 0%, $background-color 65%);
 }
 
@@ -196,4 +196,12 @@ a.flickr img {
 
 .social-media-list {
     font-size: 9pt;
+}
+
+article p {
+  font: 12px sans-serif;
+}
+
+main {
+  background-color: $background-color-2;
 }
