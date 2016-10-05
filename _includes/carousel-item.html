@@ -21,7 +21,7 @@
 
 
 <div class="item {{_active}}">
-  <img class="first-slide carousel-slide" src="{{_image}}" alt="{{ _title }}">
+  <a href="{{post.url}}"><img class="first-slide carousel-slide" src="{{_image}}" alt="{{ _title }}"></a>
   <div class="carousel-caption-custom">
     <time>{{_date}}</time>&nbsp;&nbsp;&nbsp;&nbsp;{{_post_type}}<br/><span class="carousel-title"><a href="{{post.url}}">{{ _title }}</a></span>
     <div class="carousel-description">{{ _description }}</div> 
