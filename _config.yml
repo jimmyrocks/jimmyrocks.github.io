@@ -16,8 +16,8 @@
 title: loc8.us
 email: jim@loc8.us
 description: > # this means to ignore newlines until "baseurl:"
-  Jim McAndrew's writings about Information Science.</br>
-  Focused on Geospatial, ETL, statistics, and data visualization
+  Jim McAndrew's writings about Information Science and Geography.</br>
+  Focused on Geography, Geospatial Technologies, and data visualization
 baseurl: "/" # the subpath of your site, e.g. /blog
 twitter_username: jimmyrocks
 github_username: jimmyrocks
