@@ -3,6 +3,12 @@
 img_dirs=("images/presentations/" "images/writings/" "images/projects/", "images/photography/")
 thumbnails_dir="thumbnails/"
 img_sizes=("160" "320" "640" "1280")
+force=false
+
+# Allow a force to regenerate all files
+if [ "$1" == "-f" ]; then
+  force=true
+fi
 
 for img_dir in ${img_dirs[@]}; do
   # img_dir="images/"$1"/"
@@ -16,7 +22,7 @@ for img_dir in ${img_dirs[@]}; do
       sep="-"
 
       for img_size in ${img_sizes[@]}; do
-        if [ ! -f  $img_dir$thumbnails_dir$basefilename$sep$img_size$basefileext ]; then
+        if [ ! -f  $img_dir$thumbnails_dir$basefilename$sep$img_size$basefileext ] || [ "$force" == "true" ]; then
           echo "Generating $basefilename$sep$img_size$basefileext"
           gm convert $file -resize $img_size  $img_dir$thumbnails_dir$basefilename$sep$img_size$basefileext
         fi
