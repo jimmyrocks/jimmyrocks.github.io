@@ -21,7 +21,7 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "/" # the subpath of your site, e.g. /blog
 twitter_username: jimmyrocks
 github_username: jimmyrocks
-user_image: "/images/base/headshot_twitter.png"
+user_image: "/images/base/headshot_facebook.jpg"
 site_logo: ""
 highlighter: rouge
 include: ['_nav', '_pages']
