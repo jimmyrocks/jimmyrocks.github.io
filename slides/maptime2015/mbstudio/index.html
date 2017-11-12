@@ -1,0 +1,451 @@
+---
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="author" content="NPMap Team">
+    <meta name="description" content="A web mapping workshop given by the NPMap team at the 2014 ASPRS conference in Denver, Colorado.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="//maptime.io/favicon.ico" rel="shortcut icon">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+    <link href="reveal.min.css" rel="stylesheet">
+    <link href="nps.css" id="theme" rel="stylesheet">
+    <link href="zenburn.css" rel="stylesheet">
+    <title>Mapbox Studio Tutorial | Maptime Boulder</title>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Making A Map with Mapbox Studio</h2>
+          <h3>
+            <span class="highlight">#maptime Boulder March 12, 2015</span>
+          </h3>
+        </section>
+        <section>
+          <section>
+            <h2 class="highlight">Mapbox</h2>
+            <h3>A provider of online maps and contributor to many popular online mapping libraries and applications.</h3>
+            <div>
+            <span class="highlight">Mapbox</span> offers commercial mapping services. Many of them use <span class="highlight">OpenStreetMap</span> data and involve large open-source efforts. Mapbox is a main contributor to the <span class="highlight">Mapnik</span> renderer project, they helped create the web editor <span class="highlight">iD</span> and they created <span class="highlight">Tilemill</span>, the software used to design the OpenStreetMap map style. (from http://wiki.openstreetmap.org/wiki/Mapbox)
+          </div><br/><div>
+            Mapbox was created as a part of <span class="highlight">Development Seed</span> in order to offer map customization for non-profit customers, in 2010. It was bootstrapped until a 2013 $10M funding round by Foundry Group. Early work on OpenStreetMap tools, including the iD editor, was funded by a $575,000 grant from the Knight Foundation. (from http://en.wikipedia.org/wiki/Mapbox)
+          </div>
+          </section>
+          <section>
+            <h2 class="highlight">Mapbox Editor</h2>
+            <ul>
+              <li>An online mapping interface for basic map customization and data creation</li>
+            </ul>
+          </section>
+          <section>
+            <h2 class="highlight">TileMill</h2>
+            <ul>
+              <li>An open source tool used to design maps for the web</li>
+              <li>Uses Mapnik for rendering and CartoCSS for styling</li>
+            </ul>
+          </section>
+          <section>
+            <h2 class="highlight">Mapbox Studio</h2>
+            <ul>
+              <li>An open source tool used to design maps for the web using vector tiles</li>
+              <li>Uses Mapnik for rendering and CartoCSS for styling</li>
+              <li>More on Studio later...</li>
+            </ul>
+          </section>
+          <section>
+            <h2 class="highlight">Mapbox.js</h2>
+            <ul>
+              <li>A JavaScript library built on top of Leaflet</li>
+              <li>Used to wrap Mapbox based maps and other functionality into web applications</li>
+            </ul>
+          </section>
+          <section>
+            <h2 class="highlight">iOS and Android SDK</h2>
+            <ul>
+              <li>Tools used to build native mobile applications for iOS or Android</li>
+            </ul>
+          </section>
+          <section>
+            <h2 class="highlight">Mapbox API</h2>
+            <ul>
+              <li>Used to power functions in maps like geocoding, routing, and offline caching</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2 class="highlight">Mapbox Studio</h2>
+            <img src="./imgs/mapbox-studio.jpg" />
+            <h6>(from <a href="https://www.mapbox.com/mapbox-studio/#darwin">https://www.mapbox.com/mapbox-studio/#darwin</a>)</h6>
+          </section>
+
+          <section>
+            <h2 class="highlight">Vector Tiles</h2>
+            <h3>Mapbox Studio gives you instant <span class="highlight">streaming access</span> to massive global datasets like:</h3>
+            <ul><li>Mapbox Streets</li>
+              <li>Mapbox Terrain</li>
+              <li>Mapbox Satellite</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="highlight">Typography</h2>
+            <h3>Mapbox Studio comes bundled with over 300 pro fonts selected for use with digital cartography.</h3>
+          </section>
+
+          <section>
+            <h2 class="highlight">Imagery & effects</h2>
+            <h3>Built directly into the Mapbox Studio style editor:</h3>
+            <ul>
+              <li>aerial imagery</li>
+              <li>textures</li>
+              <li>compositing effects</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="highlight">Resolution independence</h2>
+            <h3>Every Mapbox Studio project adapts automatically to HiDPI and Retina displays making it possible to design maps for multiple screens and devices at once.</h3>
+          </section>
+
+        </section>
+        <section>
+          <section>
+            <h1 class="highlight">Mapbox Studio Install</h1>
+          </section>
+          <section>
+            <h2 class="highlight">Install Overview</h2>
+            <ol>
+              <li>Go to the Mapbox Studio <a href="https://www.mapbox.com/mapbox-studio">download page</a>.</li>
+              <li>Click the <span class="highlight">download</span> button</li>
+              <li>Follow the instructions for your specific system.</li>
+              <li>Start it up.</li>
+              <li>Create a Mapbox account (required).</li>
+            </ol>
+          </section>
+          <section>
+            <h2 class="highlight">Downloading</h2>
+            <h3>Click the big green button on  <a href="https://www.mapbox.com/mapbox-studio">this page</a>.</h3>
+            <img src="imgs/Screen Shot 2015-03-11 at 10.46.19 PM.png" height="500px"/>
+          </section>
+          <section>
+            <h2 class="highlight">Installing</h2>
+            <ol>
+            <li>Unzip the downloaded file</li>
+            <li>Double Click the App</li>
+            </ol>
+            <img src="imgs/Screen Shot 2015-03-11 at 10.47.48 PM.png" />
+          </section>
+          <section>
+            <h2 class="highlight">Create an Account 1/4</h2>
+            <h4>Click the <span class="highlight">connect</span> button</h4>
+            <img src="imgs/Screen Shot 2015-03-11 at 10.48.41 PM.png" height="500px"/>
+          </section>
+          <section>
+            <h2 class="highlight">Create an Account 2/4</h2>
+            <h4>Click the <span class="highlight">Need an account?</span> button</h4>
+            <img src="imgs/Screen Shot 2015-03-11 at 10.48.58 PM.png" height="500px"/>
+          </section>
+          <section>
+            <h2 class="highlight">Create an Account 3/4</h2>
+            <h4>Fill in your information</h4>
+            <img src="imgs/Screen Shot 2015-03-11 at 10.49.51 PM.png" height="500px"/>
+          </section>
+          <section>
+            <h2 class="highlight">Create an Account 4/4</h2>
+            <h4>Allow Mapbox Studio access to your account</h4>
+            <img src="imgs/Screen Shot 2015-03-11 at 10.50.27 PM.png" height="500px"/>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1 class="highlight">Using Mapbox Studio</h1>
+          </section>
+          <section>
+            <h2 class="highlight">The Mapbox GUI</h2>
+            <ol>
+            <li>Create a project</li>
+            <li>Left Sidebar</li>
+            <li>Top Bar</li>
+            <li>Map Preview</li>
+            <li>Right Sidebar</li>
+            </ol>
+          </section>
+          <section>
+            <h2 class="highlight">Creating a project</h2>
+            <h3>Select a style from the styles window</h3>
+            <img src="imgs/Screen Shot 2015-03-11 at 10.55.28 PM.png" height="500px"/>
+          </section>
+          <section>
+            <h2 class="highlight">Left Sidebar</h2>
+            <img src="imgs/Screen Shot 2015-03-11 at 11.01.16 PM.png" height="500px"/>
+          </section>
+          <section>
+            <h2 class="highlight">Left Sidebar</h2>
+            <h3>Save As<h3>
+            <h5>Allows you to save your mbstudio style and associated datasets.</h5>
+          </section>
+          <section>
+            <h2 class="highlight">Left Sidebar</h2>
+            <h3>Settings</h3>
+            <h5>Allows you to export your vector tiles to a file or directly to Mapbox's servers</h5>
+            <h6>Allows you to change attributes for your projects such as:</h6>
+            <h7><ul><li>name</li><li>description</li><li>attribution</li><li>center</li><li>format</li><li>zoom levels</li></ul></li></ul></h7>
+          </section>
+          <section>
+            <h2 class="highlight">Left Sidebar</h2>
+            <h3>Layers</h4>
+            <h5>Allows you see what layers are available to use in your map.</h5>
+          </section>
+          <section>
+            <h2 class="highlight">Left Sidebar</h2>
+            <h3>Fonts</h3>
+            <h5>Displays what fonts are available for your to use.</h5>
+          </section>
+          <section>
+            <h2 class="highlight">Left Sidebar</h2>
+            <h3>Docs<h3>
+            <h5>Answers to all kinds of questions about Mapbox Studio.</h5>
+          </section>
+          <section>
+            <h2 class="highlight">Left Sidebar</h2>
+            <h3>Projects</h3>
+            <h5>Open an existing project.</h5>
+            <h5>Create a new project.</h5>
+          </section>
+          <section>
+            <h2 class="highlight">Top Bar</h2>
+            <img src="imgs/Screen Shot 2015-03-11 at 11.08.14 PM.png" />
+          </section>
+          <section>
+            <h2 class="highlight">Left Sidebar</h2>
+            <h3>Search</h3>
+            <h5>Search for a city to pan the map.</h5>
+          </section>
+          <section>
+            <h2 class="highlight">Left Sidebar</h2>
+            <h3>Expand Map</h3><h5>Toggles the display of the right sidebar.</h5>
+          </section>
+          <section>
+            <h2 class="highlight">Left Sidebar</h2>
+            <h3>Zoom + / -</h3><h5>Zooms your map in or out.</h5>
+          </section>
+          <section>
+            <h2 class="highlight">Left Sidebar</h2>
+            <h3>View Wireframe</h3><h5>Allows you to see the raw data behind the map.</h5>
+          </section>
+          <section>
+            <h2 class="highlight">Left Sidebar</h2>
+            <h3>Places</h3><h5>Allows you to view your style in many different places around the world.</h5>
+          </section>
+          <section>
+            <h2 class="highlight">Map Preview</h2>
+            <h4>A straightforward preview of what your final map will look like</h4>
+            <img src="imgs/Screen Shot 2015-03-11 at 11.11.44 PM.png" height="500px"/>
+          </section>
+          <section>
+            <h2 class="highlight">Right Sidebar</h2>
+            <h4>Contains the <span class="highlight">CartoCSS</span> used to style the map</h4>
+            <img src="imgs/Screen Shot 2015-03-11 at 11.12.49 PM.png" height="500px"/>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1><span class="highlight">Creating A Map</span> with Mapbox Studio</h1>
+            <h5>Heavily adapted from here: <a href="https://www.mapbox.com/mapbox-studio/source-quickstart/">https://www.mapbox.com/mapbox-studio/source-quickstart/</a></h5>
+          </section>
+          <section>
+            <h2 class="highlight">Quickstart Overview</h2>
+            <ol>
+              <li>Download your dataset</li>
+              <li>Create a new project</li>
+              <li>Add your dataset</li>
+              <li>Adjust its settings</li>
+              <li>Verify the dataset's properties</li>
+              <li>Add field desciptions</li>
+              <li>Save and Upload</li>
+            </ol>
+          </section>
+
+          <section>
+          <h3 class="highlight">Download your data</h3>
+          <h4>You can use the Boulder Restaurant Data here: <a href="http://www.loc8.us/maptime2015/mbstudio/boulder_restaurants.geojson">http://www.loc8.us/maptime2015/mbstudio/boulder_restaurants.geojson</a></h4>
+          <h4>Or download your own GeoJSON dataset with Overpass Turbo: <a href="http://overpass-turbo.eu/">http://overpass-turbo.eu/</a></h4>
+          </section>
+
+          <section>
+          <h3 class="highlight">Create a new project:</h3>
+          <h4>Click <span class="highlight">Projects</span></h4>
+          <img src="imgs/Screen Shot 2015-03-11 at 11.57.49 PM.png" height="60px"/>
+          <h4>Click <span class="highlight">New Project</span></h4>
+          <img src="imgs/Screen Shot 2015-03-11 at 11.57.54 PM.png" height="100px"/>
+          <h4>Click Blank Source on the right side of the screen</h4>
+          </section>
+
+          <section>
+          <h3 class="highlight">Add your dataset</h3>
+          <h4>Click <span class="highlight">New Layer</span> on the top right</h4>
+          <img src="imgs/Screen Shot 2015-03-12 at 12.09.42 AM.png" height="60px"/>
+          <h4>Select the layer downloaded in step 1</h4>
+          <img src="imgs/Screen Shot 2015-03-12 at 12.09.49 AM.png" height="120px"/>
+          </section>
+
+          <section>
+          <h3 class="highlight">Adjust its settings</h3>
+          <h4>Add a description</h4>
+          <h4>Set the <span class="highlight">buffer size</span> to 32</h4>
+          <h4>Click <span class="highlight">Done</span> in the upper right</h4>
+          <img src="imgs/Screen Shot 2015-03-12 at 12.10.50 AM.png" height="400px"/>
+          </section>
+
+          <section>
+          <h3 class="highlight">Verify the dataset's properties</h3>
+          <h4>Save your project</h4>
+          <img src="imgs/Screen Shot 2015-03-12 at 12.11.10 AM.png" height="100px"/>
+          <h4>If you can't find your data, search for Boulder (or whatever city your points are located) using the Top Bar</h4>
+          </section>
+
+          <section>
+          <h3 class="highlight">Verify the dataset's properties</h3>
+          <h4>Zoom in and click on a point</h4>
+          <h4>Verify the properties listed</h4>
+          <img src="imgs/Screen Shot 2015-03-12 at 12.11.28 AM.png" height = "500px"/>
+          </section>
+
+          <section>
+          <h3 class="highlight">Add field descriptions</h3>
+          <h4>Click on your layer in the Layers section in the Right Bar</h4>
+          <img src="imgs/Screen Shot 2015-03-12 at 12.11.35 AM.png"/>
+          <h4>Click the <span class="highlight">Fields</span> button in the top right</h4>
+          <h4>Write a description for each of your fields</h4>
+          <h4>Click Done</h4>
+          </section>
+
+          <section>
+          <h3 class="highlight">Add field descriptions</h3>
+          <img src="imgs/Screen Shot 2015-03-12 at 12.12.14 AM.png" height = "500px"/>
+          </section>
+
+          <section>
+          <h3 class="highlight">Save and Upload</h3>
+          <h4>Save again, the same way as before</h4>
+          <h4>Click <span class="highlight">Settings</span> in the Left Bar</h4>
+          <h4>Click <span class="highlight">Upload to Mapbox</span></h4>
+          <img src="imgs/Screen Shot 2015-03-12 at 12.14.10 AM.png"/>
+          <h4>When it is done, click <span class="highlight">Back</span> and then <span class="highlight">Settings</span>, and copy your Map ID for use later</h4>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1><span class="highlight">Styling your Map</span> with Mapbox Studio</h1>
+            <h5>Heavily adapted from here: <a href="https://www.mapbox.com/mapbox-studio/source-quickstart/">https://www.mapbox.com/mapbox-studio/source-quickstart/</a></h5>
+          </section>
+          <section>
+            <h2 class="highlight">Styling Overview</h2>
+            <ol>
+              <li>Create a new project</li>
+              <li>Select a basemap</li>
+              <li>Add your vector data source</li>
+              <li>Add a stylesheet for your dataset</li>
+              <li>Add a simple style</li>
+              <li>Add labels</li>
+              <li>Save and Upload</li>
+            </ol>
+          </section>
+
+          <section>
+          <h3 class="highlight">Create a new project</h3>
+          <h4>Click <span class="highlight">Projects</span> on the bottom left</h4>
+          <h4>Click <span class="highlight">New Project</span></h4>
+          </section>
+
+          <section>
+          <h3 class="highlight">Select a basemap</h3>
+          <h4>Select <span class="highlight">Satellite Afternoon</span></h4>
+          </section>
+
+          <section>
+          <h3 class="highlight">Add your vector data source</h3>
+          <h4>Click <span class="highlight">Layers</span> on the Left Bar</h4>
+          <h4>Click <span class="highlight">Change Source</span></h4>
+          <h4>In the list at the bottom add your layer's Map ID (comma separated)</h4>
+          <h4>Press <span class="highlight">Apply</span></h4>
+        </section>
+
+          <section>
+           <h3 class="highlight">Add a stylesheet for your dataset</h3>
+          <h4>On the Right Bar, Click the <span class="highlight">Plus sign</span></h4>
+          <h4>Name your new tab</h4>
+          <h4>Click <span class="highlight">New tab</span></h4>
+          </section>
+
+          <section>
+           <h3 class="highlight">Add a simple style</h3>
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">          <span style="color: #a6e22e">#boulder_restaurants</span> <span style="color: #f8f8f2">{</span>
+            <span style="color: #f8f8f2">marker</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">comp</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">op</span><span style="color: #f92672">:</span><span style="color: #f8f8f2">screen;</span>
+            <span style="color: #f8f8f2">marker</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">allow</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">overlap</span><span style="color: #f92672">:</span><span style="color: #f8f8f2">true;</span>
+            <span style="color: #f8f8f2">marker</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">line</span><span style="color: #f92672">-</span><span style="color: #66d9ef">width</span><span style="color: #f92672">:</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
+            <span style="color: #f8f8f2">marker</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">fill</span><span style="color: #f92672">:</span><span style="color: #ae81ff">#a20</span><span style="color: #f8f8f2">;</span>
+          <span style="color: #f8f8f2">}</span>
+</pre></div>
+          </section>
+
+          <section>
+           <h3 class="highlight">Add labels</h3>
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">          <span style="color: #a6e22e">#boulder_restaurants</span><span style="color: #f92672">:</span><span style="color: #a6e22e">:label</span><span style="color: #f92672">[zoom&gt;=17]</span> <span style="color: #f8f8f2">{</span>
+            <span style="color: #66d9ef">text</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">allow</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">overlap</span><span style="color: #f92672">:</span><span style="color: #f8f8f2">true;</span>
+            <span style="color: #66d9ef">text</span><span style="color: #f92672">-</span><span style="color: #66d9ef">size</span><span style="color: #f92672">:</span><span style="color: #ae81ff">14</span><span style="color: #f8f8f2">;</span>
+            <span style="color: #66d9ef">text</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">name</span><span style="color: #f92672">:</span><span style="color: #e6db74">&#39;[name]&#39;</span><span style="color: #f8f8f2">;</span>
+            <span style="color: #66d9ef">text</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">face</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">name</span><span style="color: #f92672">:</span><span style="color: #e6db74">&#39;Open Sans Regular&#39;</span><span style="color: #f8f8f2">;</span>
+            <span style="color: #66d9ef">text</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">fill</span><span style="color: #f92672">:</span><span style="color: #ae81ff">#fff</span><span style="color: #f8f8f2">;</span>
+          <span style="color: #f8f8f2">}</span>
+</pre></div>
+          </section>
+
+          <section>
+           <h3 class="highlight">Save and Upload</h3>
+          <h4>Save your map the way you've done it before</h4>
+          <h4>Go to setting and click Upload to Mapbox</h4>
+          <h4>Go to the website linked from the Map ID</h4>
+          <h4>Click on the button with an arrow pointing out of it to the top right</h4>
+          <img src="imgs/Screen Shot 2015-03-12 at 12.31.03 AM.png"/>
+
+        </section>
+        <section>
+          <h3>You can now view your map anywhere online!</h3>
+          </section>
+         </section>
+        <section>
+          <h1><span class="highlight">CartoCSS Styling</span> with Mapbox Studio</h1>
+          <h3>I think we've had enough for tonight, but if you'd like to learn more about styling in CartoCSS, you can view <a href="https://www.mapbox.com/mapbox-studio/style-quickstart/">Mapbox's Style Quickstart Guide</a></h3>
+        </section>
+      <section>
+        <h1>Thanks!</h1>
+        <img src="http://www.toothpastefordinner.com/081612/two-hours-of-maptime.gif" />
+      </section>
+      </div>
+    </div>
+
+    <script src="head.min.js"></script>
+    <script src="reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        center: false,
+        controls: true,
+        height: 700,
+        history: true,
+        overview: false,
+        progress: true,
+        theme: Reveal.getQueryHash().theme || 'nps',
+        transition: Reveal.getQueryHash().transition || 'linear',
+        width: 1100
+      });
+    </script>
+  </body>
+
+</html>

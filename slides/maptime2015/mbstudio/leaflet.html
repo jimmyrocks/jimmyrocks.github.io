@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="author" content="NPMap Team">
+  <meta name="description" content="A web mapping workshop given by the NPMap team at the 2014 ASPRS conference in Denver, Colorado.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="//maptime.io/favicon.ico" rel="shortcut icon">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css"
+  rel="stylesheet">
+  <link href="reveal.min.css" rel="stylesheet">
+  <link href="nps.css" rel="stylesheet">
+  <link href="zenburn.css" rel="stylesheet">
+  <title>Leaflet Tutorial | Maptime Boulder</title>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Leaflet (Jim) -->
+      <!-- Transition to Javascript libraries... -->
+      <section>
+        <img src="http://leafletjs.com/docs/images/logo.png"/>
+        <h3>A modern open-source JavaScript library for mobile-friendly interactive maps.</h3>
+        <img src="http://maptime.io/img/sprite@2x.png"/>
+        <h4>Maptime Boulder: January 14, 2015</h4>
+        <h4>Jim McAndrew • <a href="http://twitter.com/jimmyrocks">@jimmyrocks</a> • <a href="mailto:jim@loc8.us">jim@loc8.us</a></h4>
+      </section>
+      <section>
+        <h2>Overview</h2>
+        <ul>
+          <li>Has all of the features that most developers need to create web maps</li>
+          <li>Works seamlessly across all major desktop and mobile platforms</li>
+          <li>Designed with performance and usability in mind</li>
+        </ul>
+      </section>
+      <section>
+        <h2>History</h2>
+        <ul>
+          <li>Created as an alternative to larger mapping libraries like Google Maps
+            and OpenLayers</li>
+          <li>Originally funded as a tool to be used with OpenStreetMap</li>
+          <li>Mapbox is currently funding the majority of development, and has hired
+            its creator</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Users</h2>
+        <ul>
+          <table><tr><td>
+          <li>Flickr</li>
+          <li>foursquare</li>
+          <li>Pinterest</li>
+          <li>craigslist</li>
+          <li>Data.gov</li>
+        </td><td width = 15%></td><td>
+          <li>Wikimedia</li>
+          <li>Meetup</li>
+          <li>Mapbox</li>
+          <li>CartoDB</li>
+          <li>OpenStreetMap</li>
+    </td></tr></table>
+          <li>Many more online map tools&hellip;</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Leaflet Demo</h2>
+      </section>
+      <section>
+        <h2>Create a basic Leaflet map</h2>
+        <h3>Create a basic HTML Container</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #75715e">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #f92672">&lt;html&gt;</span>
+
+  <span style="color: #f92672">&lt;head&gt;</span>
+    <span style="color: #f92672">&lt;title&gt;</span>
+      Leaflet Demo
+    <span style="color: #f92672">&lt;/title&gt;</span>
+  <span style="color: #f92672">&lt;/head&gt;</span>
+
+  <span style="color: #f92672">&lt;body&gt;</span>
+  <span style="color: #f92672">&lt;/body&gt;</span>
+  
+<span style="color: #f92672">&lt;/html&gt;</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Create a basic Leaflet map</h2>
+        <h3>Include the Leaflet library CSS</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #f92672">&lt;head&gt;</span>
+    <span style="color: #f92672">&lt;title&gt;</span>
+      Leaflet Demo
+    <span style="color: #f92672">&lt;/title&gt;</span>
+    <span style="color: #f92672">&lt;link</span> <span style="color: #a6e22e">rel=</span><span style="color: #e6db74">&quot;stylesheet&quot;</span> <span style="color: #a6e22e">href=</span><span style="color: #e6db74">&quot;http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css&quot;</span> <span style="color: #f92672">/&gt;</span>
+  <span style="color: #f92672">&lt;/head&gt;</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Create a basic Leaflet map</h2>
+        <h3>Include the Leaflet library JavaScript</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #f92672">&lt;body&gt;</span>
+    <span style="color: #f92672">&lt;script</span> <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+  <span style="color: #f92672">&lt;/body&gt;</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Create a basic Leaflet map</h2>
+        <h3>Create a &quot;div&quot; for the map</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #f92672">&lt;body&gt;</span>
+    <span style="color: #f92672">&lt;div</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;map&quot;</span><span style="color: #f92672">&gt;&lt;/div&gt;</span>
+    <span style="color: #f92672">&lt;script</span> <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+  <span style="color: #f92672">&lt;/body&gt;</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Create a basic Leaflet map</h2>
+        <h3>Style the &quot;div&quot;</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #f92672">&lt;head&gt;</span>
+    <span style="color: #f92672">&lt;title&gt;</span>
+    Leaflet Demo
+    <span style="color: #f92672">&lt;/title&gt;</span>
+    <span style="color: #f92672">&lt;style&gt;</span>
+      <span style="color: #f92672">body,</span>
+      <span style="color: #f92672">html</span> <span style="color: #f8f8f2">{</span>
+        <span style="color: #66d9ef">height</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">100</span><span style="color: #f92672">%</span><span style="color: #f8f8f2">;</span>
+      <span style="color: #f8f8f2">}</span>
+      <span style="color: #a6e22e">#map</span> <span style="color: #f8f8f2">{</span>
+        <span style="color: #66d9ef">width</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">100</span><span style="color: #f92672">%</span><span style="color: #f8f8f2">;</span>
+        <span style="color: #66d9ef">height</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">100</span><span style="color: #f92672">%</span><span style="color: #f8f8f2">;</span>
+     <span style="color: #f8f8f2">}</span>
+    <span style="color: #f92672">&lt;/style&gt;</span>
+  <span style="color: #f92672">&lt;/head&gt;</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Create a basic Leaflet map</h2>
+        <h3>Create a script tag</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #f92672">&lt;body&gt;</span>
+    <span style="color: #f92672">&lt;div</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;map&quot;</span><span style="color: #f92672">&gt;&lt;/div&gt;</span>
+    <span style="color: #f92672">&lt;script</span> <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+    <span style="color: #f92672">&lt;script&gt;</span>
+    
+    <span style="color: #f92672">&lt;/script&gt;</span>
+  <span style="color: #f92672">&lt;/body&gt;</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Create a basic Leaflet map</h2>
+        <h3>Create a map and assign it to the &quot;div&quot; element</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">map</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">map</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;map&#39;</span><span style="color: #f8f8f2">).</span><span style="color: #a6e22e">setView</span><span style="color: #f8f8f2">([</span><span style="color: #ae81ff">40.018</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">105.278</span><span style="color: #f8f8f2">],</span> <span style="color: #ae81ff">15</span><span style="color: #f8f8f2">);</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Create a basic Leaflet map</h2>
+        <h3>Create a tileLayer and assign it to the map</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">tileLayer</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;http://otile{s}.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.png&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #a6e22e">maxZoom</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">18</span><span style="color: #f8f8f2">,</span>
+  <span style="color: #a6e22e">attribution</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;OpenStreetMap and MapQuest&#39;</span><span style="color: #f8f8f2">,</span>
+  <span style="color: #a6e22e">subdomains</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;1234&#39;</span><span style="color: #f8f8f2">,</span>
+  <span style="color: #a6e22e">type</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;map&#39;</span>
+<span style="color: #f8f8f2">}).</span><span style="color: #a6e22e">addTo</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">map</span><span style="color: #f8f8f2">);</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Create a basic Leaflet map</h2>
+        <h3>Add a marker to the map</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">marker</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">marker</span><span style="color: #f8f8f2">([</span><span style="color: #ae81ff">40.018</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">105.278</span><span style="color: #f8f8f2">]).</span><span style="color: #a6e22e">addTo</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">map</span><span style="color: #f8f8f2">);</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Add popups</h2>
+        <h3>Include Boulder Data</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #f92672">&lt;body&gt;</span>
+    <span style="color: #f92672">&lt;div</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;map&quot;</span><span style="color: #f92672">&gt;&lt;/div&gt;</span>
+    <span style="color: #f92672">&lt;script</span> <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+    <span style="color: #f92672">&lt;script</span> <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://loc8.us/maptime2015/boulder_restaurants.geojson&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+    <span style="color: #f92672">&lt;script&gt;</span>
+       <span style="color: #f8f8f2">...</span>
+    <span style="color: #f92672">&lt;/script&gt;</span>
+  <span style="color: #f92672">&lt;/body&gt;</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Style the data</h2>
+        <h3>Add a custom marker</h3>
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">geoJson</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">boulderData</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">pointToLayer</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">feature</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">latlng</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">circleMarker</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">latlng</span><span style="color: #f8f8f2">);</span>
+    <span style="color: #f8f8f2">}</span>
+  <span style="color: #f8f8f2">}).</span><span style="color: #a6e22e">addTo</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">map</span><span style="color: #f8f8f2">);</span>
+</pre></div>
+      </section>
+
+      <section>
+        <h2>Style the data</h2>
+        <h3>Style the marker</h3>
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">geoJson</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">boulderData</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">pointToLayer</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">feature</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">latlng</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">circleMarker</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">latlng</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{</span>
+        <span style="color: #a6e22e">color</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;white&#39;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #a6e22e">fillOpacity</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #a6e22e">radius</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">6</span>
+      <span style="color: #f8f8f2">});</span>
+    <span style="color: #f8f8f2">}</span>
+  <span style="color: #f8f8f2">}).</span><span style="color: #a6e22e">addTo</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">map</span><span style="color: #f8f8f2">);</span>
+</pre></div>
+      </section>
+
+      <section>
+        <h2>Style the data</h2>
+        <h3>Define the colors</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">colors</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #e6db74">&#39;bar&#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;#8e44ad&#39;</span><span style="color: #f8f8f2">,</span>
+  <span style="color: #e6db74">&#39;cafe&#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;#e74c3c&#39;</span><span style="color: #f8f8f2">,</span>
+  <span style="color: #e6db74">&#39;pub &#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;#16a085&#39;</span><span style="color: #f8f8f2">,</span>
+  <span style="color: #e6db74">&#39;restaurant&#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;#f1c40f&#39;</span>
+<span style="color: #f8f8f2">};</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Style the data</h2>
+        <h3>Link the colors</h3>
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">geoJson</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">boulderData</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">pointToLayer</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">feature</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">latlng</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">circleMarker</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">latlng</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{</span>
+        <span style="color: #a6e22e">color</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;white&#39;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #a6e22e">fillColor</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">colors</span><span style="color: #f8f8f2">[</span><span style="color: #a6e22e">feature</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">properties</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">amenity</span><span style="color: #f8f8f2">],</span>
+        <span style="color: #a6e22e">fillOpacity</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #a6e22e">radius</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">6</span>
+      <span style="color: #f8f8f2">});</span>
+    <span style="color: #f8f8f2">}</span>
+  <span style="color: #f8f8f2">}).</span><span style="color: #a6e22e">addTo</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">map</span><span style="color: #f8f8f2">);</span>
+</pre></div>
+
+      </section>
+
+      <section>
+        <h2>Add popups</h2>
+        <h3>Include Handlebars</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #f92672">&lt;body&gt;</span>
+    <span style="color: #f92672">&lt;div</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;map&quot;</span><span style="color: #f92672">&gt;&lt;/div&gt;</span>
+    <span style="color: #f92672">&lt;script</span> <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+    <span style="color: #f92672">&lt;script</span> <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://loc8.us/maptime2015/boulder_restaurants.geojson&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+    <span style="color: #f92672">&lt;script</span> <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+    <span style="color: #f92672">&lt;script&gt;</span>
+       <span style="color: #f8f8f2">...</span>
+    <span style="color: #f92672">&lt;/script&gt;</span>
+  <span style="color: #f92672">&lt;/body&gt;</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Add popups</h2>
+        <h3>Create a function to generate the popup content</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">popupContent</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">properties</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">content</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;&lt;div class=&quot;popup&quot;&gt;&#39;</span> <span style="color: #f92672">+</span>
+    <span style="color: #e6db74">&#39;&lt;span class=&quot;title&quot;&gt;{{name}}&lt;/span&gt;&lt;br/&gt;&#39;</span> <span style="color: #f92672">+</span>
+    <span style="color: #e6db74">&#39;{{address}}&lt;br/&gt;&#39;</span> <span style="color: #f92672">+</span>
+    <span style="color: #e6db74">&#39;&lt;hr/&gt;&#39;</span> <span style="color: #f92672">+</span>
+    <span style="color: #e6db74">&#39;&lt;span class=&quot;title&quot;&gt;Amenity&lt;/span&gt;: {{amenity}}&lt;br/&gt;&#39;</span> <span style="color: #f92672">+</span>
+    <span style="color: #e6db74">&#39;&lt;span class=&quot;title&quot;&gt;Cuisine&lt;/span&gt;: {{cuisine}}&lt;br/&gt;&#39;</span> <span style="color: #f92672">+</span>
+    <span style="color: #e6db74">&#39;&lt;/div&gt;&#39;</span><span style="color: #f8f8f2">;</span>
+  <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">Handlebars</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">compile</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">content</span><span style="color: #f8f8f2">)(</span><span style="color: #a6e22e">properties</span><span style="color: #f8f8f2">);</span>
+<span style="color: #f8f8f2">};</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Add popups</h2>
+        <h3>Add an &quot;onEachFeature&quot; section</h3>
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">geoJson</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">boulderData</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">pointToLayer</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">feature</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">latlng</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">circleMarker</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">latlng</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{</span>
+        <span style="color: #a6e22e">color</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;white&#39;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #a6e22e">fillColor</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">colors</span><span style="color: #f8f8f2">[</span><span style="color: #a6e22e">feature</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">properties</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">amenity</span><span style="color: #f8f8f2">],</span>
+        <span style="color: #a6e22e">fillOpacity</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #a6e22e">radius</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">6</span>
+      <span style="color: #f8f8f2">});},</span>
+    <span style="color: #a6e22e">onEachFeature</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">feature</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">layer</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">layer</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">bindPopup</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">popupContent</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">feature</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">properties</span><span style="color: #f8f8f2">));</span>
+    <span style="color: #f8f8f2">}</span>
+  <span style="color: #f8f8f2">}).</span><span style="color: #a6e22e">addTo</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">map</span><span style="color: #f8f8f2">);</span>
+</pre></div>
+      </section>
+
+      <section>
+        <h3>Final Map Code </h3>
+        <h5>(For Copy &amp; Paste)</h5>
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size: 8pt;"><pre style="margin: 0; line-height: 125%"><span style="color: #75715e">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #f92672">&lt;html&gt;</span>
+
+<span style="color: #f92672">&lt;head&gt;</span>
+  <span style="color: #f92672">&lt;title&gt;</span>
+    #maptime Boulder Leaflet Demo
+  <span style="color: #f92672">&lt;/title&gt;</span>
+  <span style="color: #f92672">&lt;link</span> <span style="color: #a6e22e">rel=</span><span style="color: #e6db74">&quot;stylesheet&quot;</span> <span style="color: #a6e22e">href=</span><span style="color: #e6db74">&quot;http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css&quot;</span> <span style="color: #f92672">/&gt;</span>
+  <span style="color: #f92672">&lt;style&gt;</span>
+    <span style="color: #f92672">body,</span>
+    <span style="color: #f92672">html</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #66d9ef">height</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">100</span><span style="color: #f92672">%</span><span style="color: #f8f8f2">;</span>
+    <span style="color: #f8f8f2">}</span>
+    <span style="color: #a6e22e">#map</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #66d9ef">width</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">100</span><span style="color: #f92672">%</span><span style="color: #f8f8f2">;</span>
+      <span style="color: #66d9ef">height</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">100</span><span style="color: #f92672">%</span><span style="color: #f8f8f2">;</span>
+    <span style="color: #f8f8f2">}</span>
+  <span style="color: #f92672">&lt;/style&gt;</span>
+<span style="color: #f92672">&lt;/head&gt;</span>
+
+<span style="color: #f92672">&lt;body&gt;</span>
+  <span style="color: #f92672">&lt;div</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;map&quot;</span><span style="color: #f92672">&gt;&lt;/div&gt;</span>
+  <span style="color: #f92672">&lt;script </span><span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+  <span style="color: #f92672">&lt;script </span><span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://loc8.us/maptime2015/boulder_restaurants.geojson&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+  <span style="color: #f92672">&lt;script </span><span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+  <span style="color: #f92672">&lt;script&gt;</span>
+    <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">map</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">map</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;map&#39;</span><span style="color: #f8f8f2">).</span><span style="color: #a6e22e">setView</span><span style="color: #f8f8f2">([</span><span style="color: #ae81ff">40.018</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">105.278</span><span style="color: #f8f8f2">],</span> <span style="color: #ae81ff">15</span><span style="color: #f8f8f2">);</span>
+    <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">colors</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #e6db74">&#39;bar&#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;#8e44ad&#39;</span><span style="color: #f8f8f2">,</span>
+      <span style="color: #e6db74">&#39;cafe&#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;#e74c3c&#39;</span><span style="color: #f8f8f2">,</span>
+      <span style="color: #e6db74">&#39;pub &#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;#16a085&#39;</span><span style="color: #f8f8f2">,</span>
+      <span style="color: #e6db74">&#39;restaurant&#39;</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;#f1c40f&#39;</span>
+    <span style="color: #f8f8f2">};</span>
+
+    <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">popupContent</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">properties</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">content</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;&lt;div class=&quot;popup&quot;&gt;&#39;</span> <span style="color: #f92672">+</span>
+        <span style="color: #e6db74">&#39;&lt;span class=&quot;title&quot;&gt;{{name}}&lt;/span&gt;&lt;br/&gt;&#39;</span> <span style="color: #f92672">+</span>
+        <span style="color: #e6db74">&#39;{{address}}&lt;br/&gt;&#39;</span> <span style="color: #f92672">+</span>
+        <span style="color: #e6db74">&#39;&lt;hr/&gt;&#39;</span> <span style="color: #f92672">+</span>
+        <span style="color: #e6db74">&#39;&lt;span class=&quot;title&quot;&gt;Amenity&lt;/span&gt;: {{amenity}}&lt;br/&gt;&#39;</span> <span style="color: #f92672">+</span>
+        <span style="color: #e6db74">&#39;&lt;span class=&quot;title&quot;&gt;Cuisine&lt;/span&gt;: {{cuisine}}&lt;br/&gt;&#39;</span> <span style="color: #f92672">+</span>
+        <span style="color: #e6db74">&#39;&lt;/div&gt;&#39;</span><span style="color: #f8f8f2">;</span>
+      <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">Handlebars</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">compile</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">content</span><span style="color: #f8f8f2">)(</span><span style="color: #a6e22e">properties</span><span style="color: #f8f8f2">);</span>
+    <span style="color: #f8f8f2">};</span>
+
+    <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">tileLayer</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;http://otile{s}.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.png&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #a6e22e">maxZoom</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">18</span><span style="color: #f8f8f2">,</span>
+      <span style="color: #a6e22e">attribution</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;OpenStreetMap and MapQuest&#39;</span><span style="color: #f8f8f2">,</span>
+      <span style="color: #a6e22e">subdomains</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;1234&#39;</span><span style="color: #f8f8f2">,</span>
+      <span style="color: #a6e22e">type</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;map&#39;</span>
+    <span style="color: #f8f8f2">}).</span><span style="color: #a6e22e">addTo</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">map</span><span style="color: #f8f8f2">);</span>
+
+    <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">marker</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">marker</span><span style="color: #f8f8f2">([</span><span style="color: #ae81ff">40.018</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">105.278</span><span style="color: #f8f8f2">]).</span><span style="color: #a6e22e">addTo</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">map</span><span style="color: #f8f8f2">);</span>
+
+    <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">geoJson</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">boulderData</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #a6e22e">pointToLayer</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">feature</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">latlng</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">circleMarker</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">latlng</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{</span>
+          <span style="color: #a6e22e">color</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;white&#39;</span><span style="color: #f8f8f2">,</span>
+          <span style="color: #a6e22e">fillColor</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">colors</span><span style="color: #f8f8f2">[</span><span style="color: #a6e22e">feature</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">properties</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">amenity</span><span style="color: #f8f8f2">],</span>
+          <span style="color: #a6e22e">fillOpacity</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span>
+          <span style="color: #a6e22e">radius</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">6</span>
+        <span style="color: #f8f8f2">});},</span>
+      <span style="color: #a6e22e">onEachFeature</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">feature</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">layer</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">layer</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">bindPopup</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">popupContent</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">feature</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">properties</span><span style="color: #f8f8f2">));</span>
+      <span style="color: #f8f8f2">}</span>
+    <span style="color: #f8f8f2">}).</span><span style="color: #a6e22e">addTo</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">map</span><span style="color: #f8f8f2">);</span>
+
+  <span style="color: #f92672">&lt;/script&gt;</span>
+<span style="color: #f92672">&lt;/body&gt;</span>
+
+<span style="color: #f92672">&lt;/html&gt;</span>
+</pre></div>
+
+     </section>
+
+      <section>
+        <h2>Plugins</h2>
+        <h3><a href="http://leafletjs.com/plugins.html">Leaflet plugins</a></h3>
+        <h4>http://leafletjs.com/plugins.html</h4>
+      </section>
+
+      <section>
+        <h2>leaflet.draw</h2>
+        <h3>Add CSS link</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #f92672">&lt;head&gt;</span>
+    <span style="color: #f92672">&lt;title&gt;</span>
+      Leaflet Demo
+    <span style="color: #f92672">&lt;/title&gt;</span>
+    <span style="color: #f92672">&lt;link</span> <span style="color: #a6e22e">rel=</span><span style="color: #e6db74">&quot;stylesheet&quot;</span> <span style="color: #a6e22e">href=</span><span style="color: #e6db74">&quot;http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css&quot;</span> <span style="color: #f92672">/&gt;</span>
+  <span style="color: #f92672">&lt;/head&gt;</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>leaflet.draw</h2>
+        <h3>Add JavaScript link</h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #f92672">&lt;body&gt;</span>
+    <span style="color: #f92672">&lt;div</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;map&quot;</span><span style="color: #f92672">&gt;&lt;/div&gt;</span>
+    <span style="color: #f92672">&lt;script</span> <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+    <span style="color: #f92672">&lt;script</span> <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://cdnjs.cloudflare.com/ajax/libs/reqwest/1.1.5/reqwest.min.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+    <span style="color: #f92672">&lt;script</span> <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+    <span style="color: #f92672">&lt;script</span> <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;http://leaflet.github.io/Leaflet.draw/leaflet.draw.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+    <span style="color: #f92672">&lt;script&gt;</span>
+       <span style="color: #f8f8f2">...</span>
+    <span style="color: #f92672">&lt;/script&gt;</span>
+  <span style="color: #f92672">&lt;/body&gt;</span>
+</pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>leaflet.draw</h2>
+        <h3>Sample Code </h3>
+        <!-- HTML generated using hilite.me -->
+        <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;font-size:12pt;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">drawnItems</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">FeatureGroup</span><span style="color: #f8f8f2">();</span>
+<span style="color: #a6e22e">map</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">addLayer</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">drawnItems</span><span style="color: #f8f8f2">);</span>
+
+<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">drawControl</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">L</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">Control</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">Draw</span><span style="color: #f8f8f2">({</span>
+  <span style="color: #a6e22e">draw</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">position</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;topleft&#39;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #a6e22e">polygon</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #a6e22e">title</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;Draw a sexy polygon!&#39;</span><span style="color: #f8f8f2">,</span>
+      <span style="color: #a6e22e">allowIntersection</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">false</span><span style="color: #f8f8f2">,</span>
+      <span style="color: #a6e22e">drawError</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
+        <span style="color: #a6e22e">color</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;#b00b00&#39;</span><span style="color: #f8f8f2">,</span>
+        <span style="color: #a6e22e">timeout</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">1000</span>
+      <span style="color: #f8f8f2">},</span>
+      <span style="color: #a6e22e">shapeOptions</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
+        <span style="color: #a6e22e">color</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;#bada55&#39;</span>
+      <span style="color: #f8f8f2">},</span>
+      <span style="color: #a6e22e">showArea</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">true</span>
+    <span style="color: #f8f8f2">},</span>
+    <span style="color: #a6e22e">polyline</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #a6e22e">metric</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">false</span>
+    <span style="color: #f8f8f2">},</span>
+    <span style="color: #a6e22e">circle</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #a6e22e">shapeOptions</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
+        <span style="color: #a6e22e">color</span><span style="color: #f92672">:</span> <span style="color: #e6db74">&#39;#662d91&#39;</span>
+      <span style="color: #f8f8f2">}</span>
+    <span style="color: #f8f8f2">}</span>
+  <span style="color: #f8f8f2">},</span>
+  <span style="color: #a6e22e">edit</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">featureGroup</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">drawnItems</span>
+  <span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">});</span>
+<span style="color: #a6e22e">map</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">addControl</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">drawControl</span><span style="color: #f8f8f2">);</span>
+
+<span style="color: #a6e22e">map</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">on</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;draw:created&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">function</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">e</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">type</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">e</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">layerType</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #a6e22e">layer</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">e</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">layer</span><span style="color: #f8f8f2">;</span>
+
+  <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">type</span> <span style="color: #f92672">===</span> <span style="color: #e6db74">&#39;marker&#39;</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">layer</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">bindPopup</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;A popup!&#39;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #a6e22e">drawnItems</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">addLayer</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">layer</span><span style="color: #f8f8f2">);</span>
+<span style="color: #f8f8f2">});</span>
+</pre>
+      </section>
+      <section>
+        <h1>Thanks!</h1>
+        <img src="http://www.toothpastefordinner.com/081612/two-hours-of-maptime.gif" />
+      </section>
+      </div>
+    </div>
+
+    <script src="head.min.js"></script>
+    <script src="reveal.js"></script>
+    <script>
+      Reveal.initialize(
+      {
+        center: false,
+        controls: true,
+        height: 700,
+        history: true,
+        overview: false,
+        progress: true,
+        theme: Reveal.getQueryHash().theme || 'nps',
+        transition: Reveal.getQueryHash().transition || 'linear',
+        width: 1100
+      });
+    </script>
+</body>
+
+</html>

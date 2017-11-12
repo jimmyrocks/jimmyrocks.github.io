@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    #maptime Boulder Leaflet Demo
+  </title>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <style>
+    body,
+    html {
+      height: 100%;
+    }
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <script src="http://loc8.us/maptime2015/boulder_restaurants.geojson"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+  <script>
+    var map = L.map('map').setView([40.018, -105.278], 15);
+    var colors = {
+      'bar': '#8e44ad',
+      'cafe': '#e74c3c',
+      'pub ': '#16a085',
+      'restaurant': '#f1c40f'
+    };
+
+    var popupContent = function(properties) {
+      var content = '<div class="popup">' +
+        '<span class="title">{{name}}</span><br/>' +
+        '{{address}}<br/>' +
+        '<hr/>' +
+        '<span class="title">Amenity</span>: {{amenity}}<br/>' +
+        '<span class="title">Cuisine</span>: {{cuisine}}<br/>' +
+        '</div>';
+      return Handlebars.compile(content)(properties);
+    };
+
+    L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: 'OpenStreetMap and MapQuest',
+      subdomains: '1234',
+      type: 'map'
+    }).addTo(map);
+    
+    var marker = L.marker([40.018, -105.278]).addTo(map);
+
+    L.geoJson(boulderData, {
+      pointToLayer: function(feature, latlng) {
+        return L.circleMarker(latlng, {
+          color: 'white',
+          fillColor: colors[feature.properties.amenity],
+          fillOpacity: 1,
+          radius: 6
+        });},
+      onEachFeature: function(feature, layer) {
+        return layer.bindPopup(popupContent(feature.properties));
+      }
+    }).addTo(map);
+        
+  </script>
+</body>
+
+</html>
